@@ -1290,9 +1290,12 @@ public class IntegrationController {
 		if (payload.getFacultyCode().getCode().equals("A10")) {
 			admission.setAdvisor(null);
 		} else {
-			AdStaff advisor = identityService.findStaffByIdentityNo(payload.getSupervisorCode());
-			LOG.debug("advisor name:{}", advisor.getName());
-			admission.setAdvisor(advisor);
+			if(payload.getSupervisorCode() != null){
+				AdStaff advisor = identityService.findStaffByIdentityNo(payload.getSupervisorCode());
+				admission.setAdvisor(advisor);				
+			}
+			LOG.debug("SupervisorCode null !");
+			admission.setAdvisor(null);
 		}
 		LOG.info("Finish Supervisor");
 

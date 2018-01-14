@@ -134,13 +134,15 @@ public class PlannerController {
 
 		if (isAcademicSessionCodeExists(code)) {
 
-			System.out.println("Duplicate session:" + code);
-			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+			System.out.println("Duplicate academic session:" + code);
+	
 		} else {
 
-			System.out.println("Update previous session TRUE to FALSE first then save");
-			AdAcademicSession academicSession1 = plannerService.findCurrentAcademicSession();
+	
+			
 			if (isCurrent(true) == true) {
+				AdAcademicSession academicSession1 = plannerService.findCurrentAcademicSession();
+				System.out.println("Update previous session TRUE to FALSE first then save");
 				System.out.println("Check state TRUE" + isCurrent(true));
 				academicSession1.setCurrent(false);
 				plannerService.updateAcademicSession(academicSession1);
@@ -162,12 +164,34 @@ public class PlannerController {
 				academicSession.setGraduationStartDate(vo.getGraduationStartDate());
 				academicSession.setGraduationEndDate(vo.getGraduationEndDate());				
 				academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-				// academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
+				
 				academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
 				plannerService.saveAcademicSession(academicSession);
 
 				System.out.println("Save session:" + code);
-				return new ResponseEntity<String>("Success", HttpStatus.OK);
+				//return new ResponseEntity<String>("Success", HttpStatus.OK);
+			}else{
+				AdAcademicSession academicSession = new AdAcademicSessionImpl();
+				academicSession.setCode(vo.getCode());
+				
+				System.out.println("setDescription: SEMESTER " + vo.getSemester() + " " + vo.getYear().getDescription());
+				
+				academicSession.setDescription("SEMESTER " + vo.getSemester() + " " + vo.getYear().getDescription());
+				academicSession.setCurrent(vo.isCurrent());
+				academicSession.setStartDate(vo.getstartDate());
+				academicSession.setEndDate(vo.getendDate());
+				academicSession.setEnrollStartDate(vo.getEnrollStartDate());
+				academicSession.setEnrollEndDate(vo.getEnrollEndDate());
+				academicSession.setAdmissionStartDate(vo.getAdmissionStartDate());
+				academicSession.setAdmissionEndDate(vo.getAdmissionEndDate());
+				academicSession.setGraduationStartDate(vo.getGraduationStartDate());
+				academicSession.setGraduationEndDate(vo.getGraduationEndDate());				
+				academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
+				academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
+				plannerService.saveAcademicSession(academicSession);
+
+				System.out.println("Save session:" + code);
+				
 			}
 		}
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
