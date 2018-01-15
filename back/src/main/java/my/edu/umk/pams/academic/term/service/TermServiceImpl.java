@@ -7,6 +7,7 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -23,6 +24,7 @@ import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramLevelPayload;
 import my.edu.umk.pams.connector.payload.StudentPayload;
+import my.edu.umk.pams.connector.payload.StudentStatus;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 
 import org.activiti.engine.task.Task;
@@ -889,6 +891,7 @@ public class TermServiceImpl implements TermService {
 		StudentPayload studentPayload = new StudentPayload();
 		studentPayload.setMatricNo(student.getMatricNo());
 		studentPayload.setName(student.getName());
+		studentPayload.setStudentStatus(StudentStatus.get(student.getStudentStatus().ordinal()));
 		LOG.debug("Broadcast studentPayload:{}",studentPayload.getMatricNo());
 		
 		StudyModePayload studyModePayload = new StudyModePayload();
