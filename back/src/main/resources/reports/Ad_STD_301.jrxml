@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="studentProfil" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05907e35-b022-4733-9b67-9550d76e72f3">
 	<property name="ireport.zoom" value="1.210000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="672"/>
+	<property name="ireport.y" value="48"/>
 	<subDataset name="address" uuid="06e2d23e-b7b4-46e4-a274-16762b10a073">
 		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
@@ -249,37 +249,17 @@ GROUP BY
      ad_stdn."id" AS ad_stdn_id,
      ad_stdn."cohort_id" AS ad_stdn_cohort_id,
      ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
-
+     ad_stdn."balance" AS ad_stdn_balance,
+     ad_stdn."gender_id" AS ad_stdn_gender_id,
+     ad_stdn."marital_id" AS ad_stdn_marital_id,
+     ad_stdn."nationality_id" AS ad_stdn_nationality_id,
+     ad_stdn."race_code_id" AS ad_stdn_race_code_id,
+     ad_stdn."religion_id" AS ad_stdn_religion_id,
      ad_chrt."id" AS ad_chrt_id,
      ad_chrt."classification" AS ad_chrt_classification,
      ad_chrt."code" AS ad_chrt_code,
      ad_chrt."description" AS ad_chrt_description,
      ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
-     ad_chrt."program_id" AS ad_chrt_program_id,
-     ad_chrt."session_id" AS ad_chrt_session_id,
-     ad_prgm."id" AS ad_prgm_id,
-     ad_prgm."title_ms" AS ad_prgm_title_ms,
-     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
-     ad_prgm."level_id" AS ad_prgm_level_id,
-     ad_prgm."code" AS ad_prgm_code,
-     ad_prgm."title_en" AS ad_prgm_title_en,
-     ad_prgm."status" AS ad_prgm_status,
-     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
-     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
-     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
-     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
-     ad_acdm_sesn."end_date" AS ad_acdm_sesn_end_date,
-     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
-     ad_acdm_sesn."start_date" AS ad_acdm_sesn_start_date,
-     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
-     ad_fcty."id" AS ad_fcty_id,
-     ad_fcty."code" AS ad_fcty_code,
-     ad_fcty."description" AS ad_fcty_description,
-     ad_fcty."name" AS ad_fcty_name,
-     ad_prgm_levl."id" AS ad_prgm_levl_id,
-     ad_prgm_levl."code" AS ad_prgm_levl_code,
-     ad_prgm_levl."description" AS ad_prgm_levl_description,
-
      ad_stdy_mode."id" AS ad_stdy_mode_id,
      ad_stdy_mode."code" AS ad_stdy_mode_code,
      ad_stdy_mode."description" AS ad_stdy_mode_description,
@@ -292,23 +272,54 @@ GROUP BY
      ad_admn."ordinal" AS ad_admn_ordinal,
      ad_admn."standing" AS ad_admn_standing,
      ad_admn."status" AS ad_admn_status,
-     ad_admn."cohort_id" AS ad_admn_cohort_id,
      ad_admn."session_id" AS ad_admn_session_id,
      ad_admn."student_id" AS ad_admn_student_id,
-     ad_admn."advisor_id" AS ad_admn_advisor_id,
      ad_admn."study_center_id" AS ad_admn_study_center_id,
+     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
+     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
+     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
+     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
+     ad_acdm_sesn."end_date" AS ad_acdm_sesn_end_date,
+     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
+     ad_acdm_sesn."start_date" AS ad_acdm_sesn_start_date,
+     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
+     ad_acdm_sesn."previous_id" AS ad_acdm_sesn_previous_id,
+     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
+     ad_chrt."program_id" AS ad_chrt_program_id,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."status" AS ad_prgm_status,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_fcty."id" AS ad_fcty_id,
+     ad_fcty."code" AS ad_fcty_code,
+     ad_fcty."description" AS ad_fcty_description,
+     ad_fcty."name" AS ad_fcty_name,
+     ad_fcty."status" AS ad_fcty_status,
+     ad_fcty."prefix" AS ad_fcty_prefix,
+     ad_prgm_levl."id" AS ad_prgm_levl_id,
+     ad_prgm_levl."code" AS ad_prgm_levl_code,
+     ad_prgm_levl."description" AS ad_prgm_levl_description,
+     ad_prgm_levl."adprogram_type" AS ad_prgm_levl_adprogram_type,
+     ad_prgm."level_id" AS ad_prgm_level_id,
      ad_stdy_cntr."id" AS ad_stdy_cntr_id,
      ad_stdy_cntr."code" AS ad_stdy_cntr_code,
-     ad_stdy_cntr."description" AS ad_stdy_cntr_description
+     ad_stdy_cntr."description" AS ad_stdy_cntr_description,
+     ad_stdy_cntr."c_ts" AS ad_stdy_cntr_c_ts,
+     ad_stdy_cntr."c_id" AS ad_stdy_cntr_c_id,
+     ad_stdy_cntr."d_ts" AS ad_stdy_cntr_d_ts,
+     ad_stdy_cntr."d_id" AS ad_stdy_cntr_d_id,
+     ad_stdy_cntr."m_ts" AS ad_stdy_cntr_m_ts,
+     ad_stdy_cntr."m_id" AS ad_stdy_cntr_m_id,
+     ad_stdy_cntr."m_st" AS ad_stdy_cntr_m_st
 FROM
      "public"."ad_actr" ad_actr INNER JOIN "public"."ad_stdn" ad_stdn ON ad_actr."id" = ad_stdn."id"
      INNER JOIN "public"."ad_chrt" ad_chrt ON ad_stdn."cohort_id" = ad_chrt."id"
      INNER JOIN "public"."ad_stdy_mode" ad_stdy_mode ON ad_stdn."study_mode_id" = ad_stdy_mode."id"
-     INNER JOIN "public"."ad_admn" ad_admn ON ad_stdn."id" = ad_admn."student_id"
-     AND ad_chrt."id" = ad_admn."cohort_id"
-     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
-     INNER JOIN "public"."ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
-     AND ad_chrt."session_id" = ad_acdm_sesn."id"
+     LEFT OUTER JOIN "public"."ad_admn" ad_admn ON ad_stdn."id" = ad_admn."student_id"
+     LEFT OUTER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
+      LEFT OUTER JOIN "public"."ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
      INNER JOIN "public"."ad_prgm" ad_prgm ON ad_chrt."program_id" = ad_prgm."id"
      INNER JOIN "public"."ad_fcty" ad_fcty ON ad_prgm."faculty_id" = ad_fcty."id"
      INNER JOIN "public"."ad_prgm_levl" ad_prgm_levl ON ad_prgm."level_id" = ad_prgm_levl."id"]]>
@@ -323,39 +334,21 @@ FROM
 	<field name="ad_actr_phone" class="java.lang.String"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_gender_id" class="java.lang.Long"/>
+	<field name="ad_stdn_marital_id" class="java.lang.Long"/>
+	<field name="ad_stdn_nationality_id" class="java.lang.Long"/>
+	<field name="ad_stdn_race_code_id" class="java.lang.Long"/>
+	<field name="ad_stdn_religion_id" class="java.lang.Long"/>
 	<field name="ad_chrt_id" class="java.lang.Long"/>
 	<field name="ad_chrt_classification" class="java.lang.Integer"/>
 	<field name="ad_chrt_code" class="java.lang.String"/>
 	<field name="ad_chrt_description" class="java.lang.String"/>
 	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
-	<field name="ad_chrt_program_id" class="java.lang.Long"/>
-	<field name="ad_chrt_session_id" class="java.lang.Long"/>
-	<field name="ad_prgm_id" class="java.lang.Long"/>
-	<field name="ad_prgm_title_ms" class="java.lang.String"/>
-	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
-	<field name="ad_prgm_level_id" class="java.lang.Long"/>
-	<field name="ad_prgm_code" class="java.lang.String"/>
-	<field name="ad_prgm_title_en" class="java.lang.String"/>
-	<field name="ad_prgm_status" class="java.lang.Integer"/>
-	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
-	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_end_date" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
-	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
-	<field name="ad_fcty_id" class="java.lang.Long"/>
-	<field name="ad_fcty_code" class="java.lang.String"/>
-	<field name="ad_fcty_description" class="java.lang.String"/>
-	<field name="ad_fcty_name" class="java.lang.String"/>
-	<field name="ad_prgm_levl_id" class="java.lang.Long"/>
-	<field name="ad_prgm_levl_code" class="java.lang.String"/>
-	<field name="ad_prgm_levl_description" class="java.lang.String"/>
 	<field name="ad_stdy_mode_id" class="java.lang.Long"/>
 	<field name="ad_stdy_mode_code" class="java.lang.String"/>
 	<field name="ad_stdy_mode_description" class="java.lang.String"/>
@@ -368,14 +361,47 @@ FROM
 	<field name="ad_admn_ordinal" class="java.lang.Integer"/>
 	<field name="ad_admn_standing" class="java.lang.Integer"/>
 	<field name="ad_admn_status" class="java.lang.Integer"/>
-	<field name="ad_admn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_admn_session_id" class="java.lang.Long"/>
 	<field name="ad_admn_student_id" class="java.lang.Long"/>
-	<field name="ad_admn_advisor_id" class="java.lang.Long"/>
 	<field name="ad_admn_study_center_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
+	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_end_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_previous_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
+	<field name="ad_chrt_program_id" class="java.lang.Long"/>
+	<field name="ad_prgm_id" class="java.lang.Long"/>
+	<field name="ad_prgm_code" class="java.lang.String"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
+	<field name="ad_prgm_title_en" class="java.lang.String"/>
+	<field name="ad_prgm_title_ms" class="java.lang.String"/>
+	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+	<field name="ad_fcty_id" class="java.lang.Long"/>
+	<field name="ad_fcty_code" class="java.lang.String"/>
+	<field name="ad_fcty_description" class="java.lang.String"/>
+	<field name="ad_fcty_name" class="java.lang.String"/>
+	<field name="ad_fcty_status" class="java.lang.Integer"/>
+	<field name="ad_fcty_prefix" class="java.lang.String"/>
+	<field name="ad_prgm_levl_id" class="java.lang.Long"/>
+	<field name="ad_prgm_levl_code" class="java.lang.String"/>
+	<field name="ad_prgm_levl_description" class="java.lang.String"/>
+	<field name="ad_prgm_levl_adprogram_type" class="java.lang.Integer"/>
+	<field name="ad_prgm_level_id" class="java.lang.Long"/>
 	<field name="ad_stdy_cntr_id" class="java.lang.Long"/>
 	<field name="ad_stdy_cntr_code" class="java.lang.String"/>
 	<field name="ad_stdy_cntr_description" class="java.lang.String"/>
+	<field name="ad_stdy_cntr_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_stdy_cntr_c_id" class="java.lang.Long"/>
+	<field name="ad_stdy_cntr_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_stdy_cntr_d_id" class="java.lang.Long"/>
+	<field name="ad_stdy_cntr_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_stdy_cntr_m_id" class="java.lang.Long"/>
+	<field name="ad_stdy_cntr_m_st" class="java.lang.Integer"/>
 	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )]]></filterExpression>
 	<background>
 		<band splitType="Stretch"/>
@@ -605,7 +631,7 @@ FROM
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="380" y="47" width="38" height="20" uuid="7ebd189b-df04-4e81-abfc-87905ed07148"/>
 				<textFieldExpression><![CDATA[$F{ad_stdy_cntr_code}]]></textFieldExpression>
 			</textField>
@@ -617,7 +643,7 @@ FROM
 				<reportElement x="99" y="60" width="132" height="20" uuid="7684908b-b7e7-4bd3-b8ce-05cafcdd1129"/>
 				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="404" y="47" width="97" height="20" uuid="c51c4730-dc27-4381-b76e-c705b95a420d"/>
 				<textFieldExpression><![CDATA[$F{ad_stdy_cntr_description}]]></textFieldExpression>
 			</textField>
