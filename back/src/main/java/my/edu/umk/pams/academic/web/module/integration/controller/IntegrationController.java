@@ -1147,25 +1147,16 @@ public class IntegrationController {
 
 		student.setBalance(payload.getBalance());
 		student.setOutstanding(payload.isOutstanding());
-
-		// Condition Boolean Outstanding == true
-		if (payload.isOutstanding() == true) {
-
-			LOG.info("Student Has Outstanding Payments");
-
+		student.setStudentStatus(AdStudentStatus.get(payload.getStudentStatus().ordinal()));
+		
+		if(payload.isOutstanding()==true){
+			
+			LOG.info("Student Has Outstanding Payment");
 			student.setMemo("Outstanding Payments");
-			student.setStudentStatus(AdStudentStatus.BARRED);
-
-		}
-
-		// Condition Boolean Outstanding == false
-		else {
-
-			LOG.info("Student Has No Outstanding");
-
-			student.setMemo("N/A");
-			student.setStudentStatus(AdStudentStatus.ACTIVE);
-
+		}else{
+			
+			LOG.info("Student Has No Outstanding Payment");
+			student.setMemo("Active");
 		}
 		identityService.updateStudent(student);
 
