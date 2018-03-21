@@ -54,6 +54,9 @@ import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdFacultyImpl;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdProgramImpl;
+import my.edu.umk.pams.academic.planner.model.AdProgramStatus;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
@@ -66,6 +69,7 @@ import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.connector.payload.AccountPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 import my.edu.umk.pams.connector.payload.StaffPayload;
 
 /**
@@ -94,6 +98,27 @@ public class IntegrationController {
 
 	@Autowired
 	private ProfileService profileService;
+	
+	//=======================================================================================
+	//	Program Field Code
+	//=======================================================================================
+	@RequestMapping(value = "/programCodes", method = RequestMethod.POST)
+	public ResponseEntity<String> saveProgramFieldCode(@RequestBody ProgramCodePayload payload) {
+		SecurityContext ctx = loginAsSystem();
+
+		AdProgram programCode = new AdProgramImpl();
+		programCode.setCode(payload.getCode());
+		programCode.setTitleEn(payload.getDescriptionEn());
+		programCode.setTitleMs(payload.getDescriptionMs());
+		programCode.setFaculty(plannerService.findFacultyByCode(payload.getFacultyCode().getCode()));
+		programCode.setLevel(plannerService.findProgramLevelByCode(payload.getProgramLevel().getCode()));
+		programCode.setStatus(AdProgramStatus.ACTIVE);
+		
+		plannerService.saveProgram(programCode);
+
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 
 	// ====================================================================================================
 	// Faculty/Department Code

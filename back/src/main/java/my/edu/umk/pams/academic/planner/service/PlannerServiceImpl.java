@@ -899,29 +899,29 @@ public class PlannerServiceImpl implements PlannerService {
 		programDao.save(program, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 
-		AdFaculty faculty = facultyDao.findByCode(program.getFaculty().getCode());
-
-		LOG.debug("Start Broadcast Program");
-		// Prepare Faculty Payload
-		LOG.debug("prepare payload");
-		FacultyCodePayload f = new FacultyCodePayload();
-		f.setCode(faculty.getCode());
-		f.setDescription(faculty.getDescription());
-		// Prepare Program Level Payload
-		ProgramLevelPayload l = new ProgramLevelPayload();
-		l.setCode(program.getLevel().getCode());
-		l.setDescription(program.getLevel().getDescription());
-		// Prepare Program Payload
-		ProgramCodePayload p = new ProgramCodePayload();
-		p.setCode(program.getCode());
-		p.setDescriptionMs(program.getTitleMs());
-		p.setDescriptionEn(program.getTitleEn());
-		p.setFacultyCode(f);
-		p.setProgramLevel(l);
-
-		ProgramAddedEvent event = new ProgramAddedEvent(p);
-		applicationContext.publishEvent(event);
-		LOG.debug("Finsh Broadcast Program");
+//		AdFaculty faculty = facultyDao.findByCode(program.getFaculty().getCode());
+//
+//		LOG.debug("Start Broadcast Program");
+//		// Prepare Faculty Payload
+//		LOG.debug("prepare payload");
+//		FacultyCodePayload f = new FacultyCodePayload();
+//		f.setCode(faculty.getCode());
+//		f.setDescription(faculty.getDescription());
+//		// Prepare Program Level Payload
+//		ProgramLevelPayload l = new ProgramLevelPayload();
+//		l.setCode(program.getLevel().getCode());
+//		l.setDescription(program.getLevel().getDescription());
+//		// Prepare Program Payload
+//		ProgramCodePayload p = new ProgramCodePayload();
+//		p.setCode(program.getCode());
+//		p.setDescriptionMs(program.getTitleMs());
+//		p.setDescriptionEn(program.getTitleEn());
+//		p.setFacultyCode(f);
+//		p.setProgramLevel(l);
+//
+//		ProgramAddedEvent event = new ProgramAddedEvent(p);
+//		applicationContext.publishEvent(event);
+//		LOG.debug("Finsh Broadcast Program");
 	}
 
 	@Override
