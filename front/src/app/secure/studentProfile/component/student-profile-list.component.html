@@ -24,7 +24,51 @@
       </a>
     </div> 
     <md-divider></md-divider>
+
+    <h3 md-subheader>Thesis or Research Title Info</h3>
+    <div>
+      <a md-list-item (click)="admissionSessionDetail()" color="accent">
+      <md-icon>print</md-icon>
+      <span> View Research Title </span>
+       <md-chip-list >
+       <md-chip color="accent" >{{admissions?.length}} </md-chip>
+       </md-chip-list>   
+    </a>
+  </div>
      
+    <h3 md-subheader>Log Book Activity</h3>
+    <div>
+      <a md-list-item (click)="admissionSessionDetail()" color="accent">
+      <md-icon>create</md-icon>
+      <span> Update Log Book </span>
+       <md-chip-list >
+       <md-chip color="accent" >{{admissions?.length}} </md-chip>
+       </md-chip-list>   
+    </a>
+  </div> 
+
+  <h3 md-subheader>Viva Info</h3>
+    <div>
+      <a md-list-item (click)="admissionSessionDetail()" color="accent">
+      <md-icon>library_books</md-icon>
+      <span> Session Status </span>
+       <md-chip-list >
+       <md-chip color="accent" >{{admissions?.length}} </md-chip>
+       </md-chip-list>   
+    </a>
+  </div> 
+
+  <h3 md-subheader>Research Progress Report</h3>
+  <div>
+    <a md-list-item (click)="admissionSessionDetail()" color="accent">
+    <md-icon>library_books</md-icon>
+    <span>Details of Student</span>
+     <md-chip-list >
+     <md-chip color="accent" >{{admissions?.length}} </md-chip>
+     </md-chip-list>      
+  </a>
+</div> 
+
      <h3 md-subheader>Graduation</h3>
      
       <a md-list-item (click)="applyGraduation()" color="accent"  mdTooltip="Apply graduation">

@@ -522,7 +522,6 @@ export class StudentProfileListPage implements OnInit {
         this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
     }
 
-
     /*=========================================================================================*/
     /*GRADUATION APPLICATION*/
     /*=========================================================================================*/
