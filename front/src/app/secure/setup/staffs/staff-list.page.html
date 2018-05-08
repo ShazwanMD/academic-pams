@@ -1,0 +1,46 @@
+<md-card>
+<!-- <td-data-table
+[data]="staffs$ | async"
+[columns]="columns"
+[sortBy]="summary"
+[sortOrder]="ASC"
+[sortable]="false"
+[multiple]="false"
+[selectable]="false"
+(rowSelect)="view.emit($event)" dense>
+<template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+  <div layout="row">
+    <span flex>{{value}}</span>
+  </div>
+</template>
+
+<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+  <div layout="row">
+    <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu x-position="before" #menu="mdMenu">
+      <button md-menu-item (click)="editDialog(row)">Edit study center</button>
+      <button md-menu-item (click)="delete(row)">Delete study center</button>
+    </md-menu>
+  </div>
+</template>
+
+</td-data-table> -->
+  
+<md-card class="">
+    <pams-staff-academic-list
+      [staffs]="staffs$ | async"
+      (view)="viewStaff($event)" mdTooltip="View staff info">
+    </pams-staff-academic-list>
+
+<md-divider></md-divider>
+<md-card-actions>
+</md-card-actions>
+</md-card>
+
+<a md-fab color="accent" class="mat-fab-top-right" (click)="createDialog()">
+<md-icon>add</md-icon>
+</a>
+
+

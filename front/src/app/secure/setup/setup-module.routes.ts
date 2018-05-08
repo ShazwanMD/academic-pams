@@ -1,3 +1,4 @@
+import { StaffListPage } from './staffs/staff-list.page';
 import {StudyCenterListPage} from './study-centers/study-center-list.page';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
 import {EthnicityCodeListPage} from './ethnicity-codes/ethnicity-code-list.page';
@@ -33,6 +34,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'ethnicity-codes', component: EthnicityCodeListPage},
       {path: 'study-modes', component: StudyModeListPage},
       {path: 'study-centers', component: StudyCenterListPage},
+      {path: 'academicStaffs', component: StaffListPage}
     ]
   },
 ];

@@ -48,6 +48,12 @@ export class IdentityService {
       .map((res: Response) => <Staff[]>res.json());
   }
 
+  findAcademicStaffs(): Observable<Staff[]> {
+    console.log('findStaffs');
+    return this._http.get(this.IDENTITY_API + '/academicStaffs')
+      .map((res: Response) => <Staff[]>res.json());
+  }
+
   findStaffByIdentityNo(identityNo: string): Observable<Staff> {
     console.log('findStaffByIdentityNo');
     return this._http.get(this.IDENTITY_API + '/staffs/' + identityNo)
@@ -59,6 +65,18 @@ export class IdentityService {
     console.log('findAppointmentsByStaff');
     return this._http.get(this.IDENTITY_API + '/staffs/' + staff.identityNo + '/appointments')
       .map((res: Response) => <Appointment[]>res.json());
+  }
+
+  saveAcademicStaff(staff: Staff){
+    console.log("New_Staff : " + staff.identityNo);
+    return this._http.post(this.IDENTITY_API + '/academicStaffs', JSON.stringify(staff))
+    .flatMap((res:Response) => Observable.of(res.text()));
+  }
+
+  updateAcademicStaff(staff: Staff){
+    console.log("Update New_Staff : " + staff.identityNo);
+    return this._http.put(this.IDENTITY_API + '/academicStaffs/'+staff.identityNo, JSON.stringify(staff))
+    .flatMap((res:Response) => Observable.of(res.text()));
   }
 
   // ====================================================================================================

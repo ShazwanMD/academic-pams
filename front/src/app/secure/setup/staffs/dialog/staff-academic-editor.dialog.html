@@ -1,0 +1,47 @@
+<h2 md-dialog-title>Add New Staff Center</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm" novalidate>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <md-input-container flex mdTooltip="Please insert new staff staff No">
+        <input mdInput
+               placeholder="Staff No"
+               formControlName="identityNo"
+               fxFlex="calc(100%-25px)"/>
+      </md-input-container>
+      <div class="tc-red-600" *ngIf="editorForm.get('identityNo').invalid && editorForm.get('identityNo').touched">
+        Please insert Staff No!
+      </div>
+    </div>
+
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <md-input-container flex mdTooltip="Please insert Name">
+        <input mdInput
+               placeholder="Name"
+               formControlName="name"
+               fxFlex="calc(100%-25px)"/>
+      </md-input-container>
+      <div class="tc-red-600" *ngIf="editorForm.get('name').invalid && editorForm.get('name').touched">
+        Please insert Name!
+      </div>
+    </div>
+
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+        <md-input-container flex mdTooltip="Please insert Email">
+          <input mdInput
+                 placeholder="Email"
+                 formControlName="email"
+                 fxFlex="calc(100%-25px)"/>
+        </md-input-container>
+        <div class="tc-red-600" *ngIf="editorForm.get('email').invalid && editorForm.get('email').touched">
+          Please insert Email!
+        </div>
+      </div>
+      
+
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value,edit)" [disabled]="!editorForm.valid">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>

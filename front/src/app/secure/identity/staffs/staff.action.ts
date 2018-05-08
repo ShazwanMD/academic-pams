@@ -22,6 +22,60 @@ export class StaffActions {
     };
   }
 
+  static FIND_ACADEMIC_STAFFS = '[Staff] Find Academic Staffs';
+
+  findAcademicStaffs(): Action {
+    return {
+      type: StaffActions.FIND_ACADEMIC_STAFFS
+    };
+  }
+
+  static FIND_ACADEMIC_STAFFS_SUCCESS = '[Staff] Find Staffs Success';
+
+  findAcademicStaffsSuccess(staffs): Action {
+    console.log("findAcademicStaffsSuccess");
+    return {
+      type: StaffActions.FIND_ACADEMIC_STAFFS_SUCCESS,
+      payload: staffs
+    };
+  }
+
+  static SAVE_ACADEMIC_STAFF = '[Staff] save academic Staff';
+
+  saveAcademicStaff(staff): Action {
+    return {
+      type: StaffActions.SAVE_ACADEMIC_STAFF,
+      payload: staff
+    };
+  }
+
+  static SAVE_ACADEMIC_STAFF_SUCCESS = '[Staff] save academic Staff Success';
+
+  saveAcademicStaffSuccess(staff): Action {
+    return {
+      type: StaffActions.SAVE_ACADEMIC_STAFF_SUCCESS,
+      payload: staff
+    };
+  }
+
+  static UPDATE_ACADEMIC_STAFF = '[Staff] update academic Staff';
+
+  updateAcademicStaff(staff): Action {
+    return {
+      type: StaffActions.UPDATE_ACADEMIC_STAFF,
+      payload: staff
+    };
+  }
+
+  static UPDATE_ACADEMIC_STAFF_SUCCESS = '[Staff] update academic Staff Success';
+
+  updateAcademicStaffSuccess(staff): Action {
+    return {
+      type: StaffActions.UPDATE_ACADEMIC_STAFF_SUCCESS,
+      payload: staff
+    };
+  }
+
   //find staff by id
   static FIND_STAFF_BY_IDENTITY_NO = '[Staff] Find Staff By Identity No';
 

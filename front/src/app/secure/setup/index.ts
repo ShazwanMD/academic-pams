@@ -1,3 +1,6 @@
+import { StaffAcademicEditorDialog } from './staffs/dialog/staff-academic-editor.dialog';
+import { IdentityModule } from './../identity/index';
+import { StaffListPage } from './staffs/staff-list.page';
 import { BankCodeSelectComponent } from './bank-codes/component/bank-code-select.component';
 import { BankCodeEditorDialog } from './bank-codes/dialog/bank-code-editor.dialog';
 import { BankCode } from './../../shared/model/common/bank-code.interface';
@@ -64,6 +67,9 @@ import {nationalityCodeListReducer, NationalityCodeListState} from './nationalit
 import {ethnicityCodeListReducer, EthnicityCodeListState} from './ethnicity-codes/ethnicity-code-list.reducer';
 import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode-list.reducer';
 import {studyCenterListReducer, StudyCenterListState} from './study-centers/study-center-list.reducer';
+import { StaffsState, staffsReducer } from './staffs/staff-list.reducer';
+import { Staff } from '../../shared/model/identity/staff.interface';
+import { StaffAcademicListComponent } from './staffs/component/staff-list.component';
 
 export interface SetupModuleState {
   title: TitleState;
@@ -81,6 +87,7 @@ export interface SetupModuleState {
   studyModes: StudyModeListState;
   studyCenters: StudyCenterListState;
   bankCodes: BankCodeListState;
+  staffs: StaffsState;
 }
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -100,6 +107,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     studyModes: <StudyMode[]>[],
     studyCenters: <StudyCenter[]>[],
     bankCodes: <BankCode[]>[],
+    staffs: <Staff[]>[],
   };
 export const setupModuleReducers = {
   title: titleReducer,
@@ -117,6 +125,7 @@ export const setupModuleReducers = {
   studyModes: studyModeListReducer,
   studyCenters: studyCenterListReducer,
   bankCodes: bankCodeListReducer,
+  staffs: staffsReducer,
 };
 
 @NgModule({
@@ -127,6 +136,7 @@ export const setupModuleReducers = {
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
     EffectsModule.run(SetupEffects),
+    IdentityModule.forRoot(),
 
 
   ],
@@ -147,6 +157,9 @@ export const setupModuleReducers = {
     EthnicityCodeListPage,
     StudyModeListPage,
     StudyCenterListPage,
+    StaffListPage,
+    StaffAcademicListComponent,
+    StaffAcademicEditorDialog,
 
     //Dialog
     GradeCodeEditorDialog,
@@ -158,6 +171,7 @@ export const setupModuleReducers = {
     StudyModeEditorDialog,
     StudyCenterEditorDialog,
     BankCodeEditorDialog,
+
 
     //Component
     StudyCentreSelectComponent,
@@ -180,6 +194,7 @@ export const setupModuleReducers = {
     StateCodeEditorDialog,
     StudyCenterEditorDialog,
     BankCodeEditorDialog,
+    StaffAcademicEditorDialog,
   ],
 
 })

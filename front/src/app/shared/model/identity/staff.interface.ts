@@ -6,4 +6,6 @@ export interface Staff extends Actor {
   faculty: Faculty;
   program: Program;
   selected: boolean;
+  category:String;
+  title:String;
 }
