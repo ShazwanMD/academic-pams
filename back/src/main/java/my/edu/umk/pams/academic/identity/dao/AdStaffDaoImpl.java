@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.identity.model.AdStaffType;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -75,6 +76,20 @@ public class AdStaffDaoImpl extends GenericDaoSupport<Long, AdStaff> implements 
                 "s.staffType = :staffType " +
                 "order by s.name asc ");
         query.setInteger("staffType", type.ordinal());
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        return query.list();
+    }
+    
+    @Override
+    public List<AdStaff> findAcademicStaffByFaculty(AdStaffType type,AdFaculty faculty, Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdStaff s where " +
+                "s.staffType = :staffType " +
+                "and s.faculty = :faculty " +
+                "order by s.name asc ");
+        query.setInteger("staffType", type.ordinal());
+        query.setEntity("faculty", faculty);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         return query.list();

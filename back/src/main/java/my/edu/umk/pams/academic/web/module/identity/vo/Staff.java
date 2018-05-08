@@ -21,7 +21,18 @@ public class Staff extends Actor {
 	private Faculty faculty;
 	private Program program;
 	private String title;
+	private String category;
 	
+	
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public Faculty getFaculty() {
 	        return faculty;
 	    }

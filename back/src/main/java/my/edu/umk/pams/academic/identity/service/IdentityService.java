@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.identity.service;
 
 import my.edu.umk.pams.academic.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.academic.identity.model.*;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.connector.payload.StaffPayload;
 
 import java.util.List;
@@ -154,6 +155,8 @@ public interface IdentityService {
 	List<AdStaff> findStaffs(Integer offset, Integer limit);
 
 	List<AdStaff> findStaffs(AdStaffType type, Integer offset, Integer limit);
+	
+	List<AdStaff> findAcademicStaffByFaculty(AdStaffType type,AdFaculty faculty, Integer offset, Integer limit);
 
 	Integer countStaff();
 

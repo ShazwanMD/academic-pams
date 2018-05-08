@@ -1,10 +1,25 @@
 package my.edu.umk.pams.academic.web.module.identity.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.dao.RecursiveGroupException;
+import my.edu.umk.pams.academic.identity.model.AdActorType;
+import my.edu.umk.pams.academic.identity.model.AdGroup;
+import my.edu.umk.pams.academic.identity.model.AdGroupMember;
+import my.edu.umk.pams.academic.identity.model.AdGroupMemberImpl;
+import my.edu.umk.pams.academic.identity.model.AdPrincipal;
+import my.edu.umk.pams.academic.identity.model.AdPrincipalRole;
+import my.edu.umk.pams.academic.identity.model.AdPrincipalRoleImpl;
+import my.edu.umk.pams.academic.identity.model.AdPrincipalType;
+import my.edu.umk.pams.academic.identity.model.AdRoleType;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.identity.model.AdStaffType;
+import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.identity.model.AdUserImpl;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
@@ -62,6 +77,9 @@ public class IdentityController {
     private SystemService systemService;
 
     @Autowired
+    private PlannerService plannerService;
+
+    @Autowired
     private IdentityTransformer identityTransformer;
     
     @Autowired
@@ -107,6 +125,127 @@ public class IdentityController {
     }
     
     // ==================================================================================================== //
+    // add new staff
+    // ==================================================================================================== //
+    @RequestMapping(value = "/academicStaffs", method = RequestMethod.GET)
+    public ResponseEntity<List<Staff>> findAcademicStaffs() {
+    	
+    	AdFaculty faculty = plannerService.findFacultyByCode("A10");
+    	
+        return new ResponseEntity<List<Staff>>(identityTransformer
+                .toStaffVos(identityService.findAcademicStaffByFaculty(AdStaffType.ACADEMIC,faculty, 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/academicStaffs",method = RequestMethod.POST)
+    public ResponseEntity<String> saveAcademicStaff(@RequestBody Staff vo){
+    	
+		AdStaff a = new AdStaffImpl();
+		a.setName(vo.getName());
+		a.setActorType(AdActorType.STAFF);
+		a.setEmail(vo.getEmail());
+		a.setFaculty(plannerService.findFacultyByCode("A10"));
+		a.setFax(vo.getFax());
+		a.setIdentityNo(vo.getIdentityNo());
+		a.setMobile(vo.getMobile());
+		a.setPhone(vo.getPhone());
+		a.setStaffCategory(vo.getCategory());
+		a.setStaffNo(vo.getIdentityNo());
+		a.setStaffType(AdStaffType.ACADEMIC);
+		a.setTitle(vo.getTitle());
+		
+		identityService.saveStaff(a);
+		LOG.debug("StaffNo{}",a.getStaffNo());
+		LOG.debug("Name:{}",a.getName());
+		
+		AdUser user = new AdUserImpl();
+		user.setActor(a);
+		user.setEmail(a.getEmail());
+		user.setEnabled(true);
+		user.setLocked(true);
+		user.setName(a.getEmail());
+		user.setPassword(a.getStaffNo());
+		user.setRealName(a.getName());
+		user.setUsername(a.getEmail());
+		user.setPrincipalType(AdPrincipalType.USER);
+		
+		LOG.debug("Username{}",user.getUsername());
+		LOG.debug("Pass:{}",user.getPassword());
+		
+		identityService.saveUser(user);
+		
+		AdPrincipal principal = identityService.findPrincipalByName(a.getEmail());
+		
+		AdPrincipalRole role = new AdPrincipalRoleImpl();
+		role.setPrincipal(principal);
+		role.setRole(AdRoleType.ROLE_LECTURER);
+		identityService.addPrincipalRole(principal, role);
+
+		try{
+			AdGroup group = identityService.findGroupByName("GRP_LEC");
+			
+			AdGroupMember member = new AdGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			identityService.addGroupMember(group, principal);
+			
+			
+		}catch (RecursiveGroupException e){
+			e.printStackTrace();
+		}
+		
+		AdGroup g = identityService.findGroupByUser(user);
+		LOG.debug("Group:{}",g.getName());
+	
+    	return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/academicStaffs/{identityNo}",method = RequestMethod.PUT)
+    public ResponseEntity<String> updateAcademicStaff(@PathVariable String identityNo, @RequestBody Staff vo){
+    	
+		AdStaff a = identityService.findStaffByIdentityNo(identityNo);
+		a.setName(vo.getName());
+		a.setActorType(AdActorType.STAFF);
+		a.setEmail(vo.getEmail());
+		a.setFaculty(plannerService.findFacultyByCode("A10"));
+		a.setFax(vo.getFax());
+		a.setIdentityNo(vo.getIdentityNo());
+		a.setMobile(vo.getMobile());
+		a.setPhone(vo.getPhone());
+		a.setStaffCategory(vo.getCategory());
+		a.setStaffNo(vo.getIdentityNo());
+		a.setStaffType(AdStaffType.ACADEMIC);
+		a.setTitle(vo.getTitle());
+		
+		identityService.updateStaff(a);
+		LOG.debug("StaffNo{}",a.getStaffNo());
+		LOG.debug("Name:{}",a.getName());
+		
+		AdUser user = identityService.findUserByEmail(a.getEmail());
+		user.setActor(a);
+		user.setEmail(a.getEmail());
+		user.setEnabled(true);
+		user.setLocked(true);
+		user.setName(a.getEmail());
+		user.setPassword(a.getStaffNo());
+		user.setRealName(a.getName());
+		user.setUsername(a.getEmail());
+		user.setPrincipalType(AdPrincipalType.USER);
+		
+		LOG.debug("Username{}",user.getUsername());
+		LOG.debug("Pass:{}",user.getPassword());
+		
+		identityService.updateUser(user);
+		
+		AdPrincipal principal = identityService.findPrincipalByName(a.getEmail());
+				
+		AdGroup g = identityService.findGroupByUser(user);
+		LOG.debug("Group:{}",g.getName());
+	
+    	return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    
+    // ==================================================================================================== //
     // STUDENT
     // ==================================================================================================== //
 
@@ -121,4 +260,6 @@ public class IdentityController {
         return new ResponseEntity<Student>(identityTransformer
                 .toStudentVo(identityService.findStudentByMatricNo(identityNo)), HttpStatus.OK);
     }
+    
+
 }

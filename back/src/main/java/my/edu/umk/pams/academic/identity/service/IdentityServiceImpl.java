@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.identity.event.StaffCreatedEvent;
 import my.edu.umk.pams.academic.identity.event.StaffUpdatedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentCreatedEvent;
 import my.edu.umk.pams.academic.identity.model.*;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemServiceImpl;
 import my.edu.umk.pams.academic.util.Util;
@@ -450,6 +451,11 @@ public class IdentityServiceImpl implements IdentityService {
 	@Override
 	public List<AdStaff> findStaffs(AdStaffType type, Integer offset, Integer limit) {
 		return staffDao.find(type, offset, limit);
+	}
+	
+	@Override
+	public List<AdStaff> findAcademicStaffByFaculty(AdStaffType type,AdFaculty faculty, Integer offset, Integer limit) {
+		return staffDao.findAcademicStaffByFaculty(type,faculty, offset, limit);
 	}
 
 	@Override
