@@ -22,6 +22,8 @@ import { StaffActions } from '../../../identity/staffs/staff.action';
 import { SetupActions } from '../../setup.action';
 import { Router, ActivatedRoute } from '@angular/router';
 import { StaffAcademicEditorDialog } from '../dialog/staff-academic-editor.dialog';
+import { Store } from '@ngrx/store';
+import { SetupModuleState } from '../../index';
 
 @Component( {
     selector: 'pams-staff-academic-list',
@@ -60,7 +62,8 @@ export class StaffAcademicListComponent implements AfterViewInit, OnChanges {
         private vcf: ViewContainerRef,
         private router: Router,
         private route: ActivatedRoute,
-        private dialog : MdDialog
+        private dialog : MdDialog,
+        private store: Store<SetupModuleState>
     ) {
     }
 
@@ -113,6 +116,17 @@ export class StaffAcademicListComponent implements AfterViewInit, OnChanges {
             this.view.emit( staff );
         } );
 
+    }
+
+    delete( staff: Staff ): void {
+        var txt;
+        var r = confirm( "Are you sure to deactive this staff?" );
+        if ( r == true ) {
+            txt = "Staff has been deactived!";
+            this.store.dispatch( this.actions.deactiveStaffAcademic( staff ) )
+        } else {
+            txt = "Cancel deactive!";
+        }
     }
 
     editDialog( staff: Staff ): void {

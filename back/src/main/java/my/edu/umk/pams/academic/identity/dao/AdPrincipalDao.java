@@ -30,6 +30,8 @@ public interface AdPrincipalDao extends GenericDao<Long, AdPrincipal> {
     List<AdPrincipal> find(String filter, AdPrincipalType type);
 
     List<AdPrincipal> find(String filter, Integer offset, Integer limit);
+    
+    AdPrincipalRole findByPrincipal(AdPrincipal principal);
 
     void addRole(AdPrincipal principal, AdPrincipalRole principalRole, AdUser user);
 

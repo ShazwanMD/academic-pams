@@ -30,7 +30,7 @@ export class StaffActions {
     };
   }
 
-  static FIND_ACADEMIC_STAFFS_SUCCESS = '[Staff] Find Staffs Success';
+  static FIND_ACADEMIC_STAFFS_SUCCESS = '[Staff] Find Academic Staffs Success';
 
   findAcademicStaffsSuccess(staffs): Action {
     console.log("findAcademicStaffsSuccess");
@@ -75,6 +75,31 @@ export class StaffActions {
       payload: staff
     };
   }
+
+  static DEACTIVE_STAFF_ACADEMIC = '[Staff] Deactive Staff Academic';
+
+  deactiveStaffAcademic(staff): Action {
+    console.log("deactiveStaffAcademic");
+    return {
+      type: StaffActions.DEACTIVE_STAFF_ACADEMIC,
+      payload: staff
+    };
+  }
+
+  static DEACTIVE_STAFF_ACADEMIC_SUCCESS = '[Staff] Deactive Staff Academic  Success';
+
+  deactiveStaffAcademicSuccess(message): Action {
+    console.log("deactiveStaffAcademicSuccess");
+    return {
+      type: StaffActions.DEACTIVE_STAFF_ACADEMIC_SUCCESS,
+      payload: message
+    };
+  }
+
+
+
+
+
 
   //find staff by id
   static FIND_STAFF_BY_IDENTITY_NO = '[Staff] Find Staff By Identity No';

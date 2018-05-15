@@ -58,5 +58,14 @@ export class StaffEffects {
     .map(message => this.staffActions.updateAcademicStaffSuccess(message))
     .mergeMap(action => from([action, this.staffActions.findAcademicStaffs()]));
 
+    
+  @Effect() deactiveStaffAcademic$ = this.actions$
+  .ofType(StaffActions.DEACTIVE_STAFF_ACADEMIC)
+  .map(action => action.payload)
+  .switchMap(payload => this.identityService.deactiveStaffAcademic(payload))
+  .map(message => this.staffActions.deactiveStaffAcademicSuccess(message))
+  .mergeMap(action => from([action, this.staffActions.findAcademicStaffs()]));
+
+
 
 }

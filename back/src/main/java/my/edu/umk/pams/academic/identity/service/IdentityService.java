@@ -27,11 +27,14 @@ public interface IdentityService {
 	Set<String> findSids(AdPrincipal principal);
 
 	Integer countPrincipal(String filter);
+	
+	AdPrincipalRole findRoleByPrincipal(AdPrincipal principal);
 
 	void addPrincipalRole(AdPrincipal principal, AdPrincipalRole principalRole);
 
 	void deletePrincipalRole(AdPrincipal principal, AdPrincipalRole principalRole);
 
+	void deletePrincipal(AdPrincipal principal);
 	// ====================================================================================================
 	// USER
 	// ====================================================================================================
@@ -61,6 +64,8 @@ public interface IdentityService {
 	void updateUser(AdUser user);
 
 	void removeUser(AdUser user);
+	
+	void deleteUser(AdUser user);
 
 	void changePassword(AdUser user, String newPassword);
 
@@ -139,6 +144,8 @@ public interface IdentityService {
 	Integer countActor(String filter);
 
 	Integer countActor(String filter, AdActorType type);
+	
+	void deleteActor(AdActor actor);
 
 	// ====================================================================================================
 	// STAFF

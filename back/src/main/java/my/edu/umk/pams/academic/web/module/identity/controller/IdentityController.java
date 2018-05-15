@@ -1,7 +1,9 @@
 package my.edu.umk.pams.academic.web.module.identity.controller;
 
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.dao.RecursiveGroupException;
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdActorType;
 import my.edu.umk.pams.academic.identity.model.AdGroup;
 import my.edu.umk.pams.academic.identity.model.AdGroupMember;
@@ -29,6 +31,7 @@ import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Actor;
 import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
+import my.edu.umk.pams.academic.web.module.identity.vo.StaffAcademic;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.Appointment;
@@ -46,6 +49,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -135,6 +139,36 @@ public class IdentityController {
         return new ResponseEntity<List<Staff>>(identityTransformer
                 .toStaffVos(identityService.findAcademicStaffByFaculty(AdStaffType.ACADEMIC,faculty, 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
+    
+//    @RequestMapping(value = "/academicStaffs", method = RequestMethod.GET)
+//    public ResponseEntity<List<StaffAcademic>> findAcademicStaffs() {
+//    	
+//    	AdFaculty faculty = plannerService.findFacultyByCode("A10");
+//    	List<AdStaff> staff = identityService.findAcademicStaffByFaculty(AdStaffType.ACADEMIC, faculty, 0, Integer.MAX_VALUE);
+//    	List<AdUser> users = identityService.findUsers(0, Integer.MAX_VALUE);
+//
+//    	List<StaffAcademic> staffs = new ArrayList<StaffAcademic>();
+//    
+//    	for (AdStaff adStaff : staff) {
+//    		StaffAcademic sa = new StaffAcademic();
+//			sa.setEmail(adStaff.getEmail());
+//			sa.setName(adStaff.getName());
+//			sa.setUsername(adStaff.getEmail());
+//			
+//			AdStaff staffBaharu = identityService.findStaffByIdentityNo(adStaff.getIdentityNo());
+//			sa.setStaff(identityTransformer.toStaffVo(staffBaharu));
+//	    	for (AdUser adUser : users) {
+//	    		LOG.debug("User:{}",adUser.isEnabled());
+//			sa.setEnabled(adUser.isEnabled());
+//			staffs.add(sa);
+//			}
+//			LOG.debug("Staff:{}",adStaff.getEmail());
+//	    	staffs.add(sa);
+//    	}
+//
+//    	
+//        return new ResponseEntity<List<StaffAcademic>>(staffs,HttpStatus.OK);
+//    }
     
     @RequestMapping(value = "/academicStaffs",method = RequestMethod.POST)
     public ResponseEntity<String> saveAcademicStaff(@RequestBody Staff vo){
@@ -243,6 +277,30 @@ public class IdentityController {
 	
     	return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/academicStaffs/{identityNo}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deactiveStaffAcademic(@PathVariable String identityNo) {
+    	
+    		AdActor actor = identityService.findActorByIdentityNo(identityNo);
+
+    		AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
+    		LOG.debug("Staff ID:{}",identityNo);
+    		
+    		AdUser user = identityService.findUserByEmail(staff.getEmail());
+    		LOG.debug("User:{}",user.getEmail());
+    		
+    		if(user.isEnabled()){
+    			user.setEnabled(false);
+    		}else{
+    			user.setEnabled(true);
+    		}
+    		
+    		identityService.updateUser(user);
+
+    
+
+    		return new ResponseEntity<String>("Success", HttpStatus.OK);
+            }
 
     
     // ==================================================================================================== //

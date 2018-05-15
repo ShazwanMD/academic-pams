@@ -112,6 +112,10 @@ public class IdentityServiceImpl implements IdentityService {
 	public Integer countPrincipal(String filter) {
 		return principalDao.count(filter);
 	}
+	@Override
+	public AdPrincipalRole findRoleByPrincipal(AdPrincipal principal) {
+		return principalDao.findByPrincipal(principal);
+	}
 
 	@Override
 	public void addPrincipalRole(AdPrincipal principal, AdPrincipalRole principalRole) {
@@ -122,6 +126,11 @@ public class IdentityServiceImpl implements IdentityService {
 	@Override
 	public void deletePrincipalRole(AdPrincipal principal, AdPrincipalRole principalRole) {
 		principalDao.deleteRole(principal, principalRole, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
+	@Override
+	public void deletePrincipal(AdPrincipal principal) {
+		principalDao.delete(principal, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
 
@@ -194,6 +203,12 @@ public class IdentityServiceImpl implements IdentityService {
 	@Override
 	public void removeUser(AdUser user) {
 		userDao.remove(user, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
+	
+	@Override
+	public void deleteUser(AdUser user) {
+		userDao.delete(user, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
 
@@ -417,6 +432,12 @@ public class IdentityServiceImpl implements IdentityService {
 	@Override
 	public Integer countActor(String filter, AdActorType type) {
 		return actorDao.count(filter, type);
+	}
+	
+	@Override
+	public void deleteActor(AdActor actor) {
+		actorDao.delete(actor, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	// ====================================================================================================

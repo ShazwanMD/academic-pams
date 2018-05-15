@@ -1147,7 +1147,7 @@ public class TermController {
 			String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
 			AdEmailQueue emailQueue = new AdEmailQueueImpl();
 			emailQueue.setCode("EQ" + System.currentTimeMillis());
-			emailQueue.setTo("shaz0179@gmail.com"); // set default email to
+			emailQueue.setTo(staff.getEmail()); // set default email to
 														// test
 			emailQueue.setSubject("Appointment class for section:" + section.getCode());
 			emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);

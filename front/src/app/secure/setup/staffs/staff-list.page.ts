@@ -55,17 +55,16 @@ export class StaffListPage implements OnInit {
         this.showDialog( staff );
     }
 
-    // delete( code: StudyCenter ): void {
-    //     // this.store.dispatch(this.actions.removeStudyCenter(code))
-    //     var txt;
-    //     var r = confirm( "Are you sure to delete this data?" );
-    //     if ( r == true ) {
-    //         txt = "Data has been deleted!";
-    //         this.store.dispatch( this.actions.removeStudyCenter( code ) )
-    //     } else {
-    //         txt = "Cancel delete!";
-    //     }
-    // }
+    delete( staff: Staff ): void {
+        var txt;
+        var r = confirm( "Are you sure to deactive this staff?" );
+        if ( r == true ) {
+            txt = "Staff has been deactived!";
+            this.store.dispatch( this.actions.deactiveStaffAcademic( staff ) )
+        } else {
+            txt = "Cancel deactive!";
+        }
+    }
 
     filter(): void {
     }

@@ -1,3 +1,4 @@
+import { StaffAcademic } from './../app/shared/model/identity/staff-academic.interface';
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -78,6 +79,18 @@ export class IdentityService {
     return this._http.put(this.IDENTITY_API + '/academicStaffs/'+staff.identityNo, JSON.stringify(staff))
     .flatMap((res:Response) => Observable.of(res.text()));
   }
+
+  deactiveStaffAcademic(staff: Staff) {
+    console.log("Front:{}"+staff.identityNo);
+    return this._http.delete(this.IDENTITY_API + '/academicStaffs/' + staff.identityNo)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  // findAcademicStaffs(): Observable<StaffAcademic[]> {
+  //   console.log('findStaffs');
+  //   return this._http.get(this.IDENTITY_API + '/academicStaffs')
+  //     .map((res: Response) => <StaffAcademic[]>res.json());
+  // }
 
   // ====================================================================================================
   // PRIVATE METHODS

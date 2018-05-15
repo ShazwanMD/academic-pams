@@ -81,6 +81,13 @@ public class AdPrincipalDaoImpl extends GenericDaoSupport<Long, AdPrincipal> imp
     }
 
     @Override
+    public AdPrincipalRole findByPrincipal(AdPrincipal principal) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select u from AdPrincipalRole u where u.principal = :principal ");
+        query.setEntity("principal", principal);
+        return (AdPrincipalRole) query.uniqueResult();
+    }
+    @Override
     public void addRole(AdPrincipal principal, AdPrincipalRole role, AdUser user) {
         Session session = sessionFactory.getCurrentSession();
         role.setPrincipal(principal);
