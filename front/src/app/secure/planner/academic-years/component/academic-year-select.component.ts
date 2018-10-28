@@ -9,6 +9,7 @@ import {PlannerModuleState} from '../../index';
 @Component({
   selector: 'pams-academic-year-select',
   templateUrl: './academic-year-select.component.html',
+  styleUrls: ['./academic-year-select.scss'],
 })
 export class AcademicYearSelectComponent implements OnInit {
 

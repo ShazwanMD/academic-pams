@@ -111,9 +111,14 @@ public class ProfileServiceImpl implements ProfileService {
 		return identityService.findStudentByMatricNo(matricNo);
 	}
 
+//	@Override
+//	public List<AdStudent> findStudents(Integer offset, Integer limit) {
+//		return identityService.findStudents(offset, limit);
+//	}
+	
 	@Override
-	public List<AdStudent> findStudents(Integer offset, Integer limit) {
-		return identityService.findStudents(offset, limit);
+	public List<AdStudent> findStudents() {
+		return identityService.findStudents();
 	}
 
 	// findGraduatedStudents
@@ -124,7 +129,8 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Override
 	public List<AdStudent> findStudents(String filter, Integer offset, Integer limit) {
-		return identityService.findStudents(offset, limit);
+		return identityService.findStudents();
+	//	return identityService.findStudents(offset, limit);
 	}
 
 	@Override

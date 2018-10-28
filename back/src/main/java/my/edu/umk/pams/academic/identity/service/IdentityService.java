@@ -204,7 +204,9 @@ public interface IdentityService {
 
 	AdStudent findStudentByMatricNo(String matricNo);
 
-	List<AdStudent> findStudents(Integer offset, Integer limit);
+//	List<AdStudent> findStudents(Integer offset, Integer limit);
+	
+	List<AdStudent> findStudents();
 
 	// findGraduatedStudents
 	List<AdStudent> findGraduatedStudents(Integer offset, Integer limit);
@@ -264,5 +266,6 @@ public interface IdentityService {
 	boolean hasSponsorship(AdSponsor sponsor);
 
 	void updateSponsorship(AdSponsorship sponsorship);
+
 
 }

@@ -1,4 +1,3 @@
-import { StaffAcademic } from './../app/shared/model/identity/staff-academic.interface';
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
