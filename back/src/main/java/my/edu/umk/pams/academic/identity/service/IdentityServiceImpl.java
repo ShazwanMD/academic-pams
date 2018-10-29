@@ -1006,10 +1006,10 @@ public class IdentityServiceImpl implements IdentityService {
 		return studentDao.findByStudentNo(matricNo);
 	}
 
-//	@Override
-//	public List<AdStudent> findStudents(Integer offset, Integer limit) {
-//		return studentDao.find(offset, limit);
-//	}
+	@Override
+	public List<AdStudent> findStudents(Integer offset, Integer limit) {
+		return studentDao.find(offset, limit);
+	}
 	
 	@Override
 	public List<AdStudent> findStudents() {

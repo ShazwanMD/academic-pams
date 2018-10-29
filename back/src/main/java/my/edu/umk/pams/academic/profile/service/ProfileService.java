@@ -31,8 +31,8 @@ public interface ProfileService {
 	AdContact findContactById(Long id);
 
 	/*Listing*/
-	List<AdStudent> findStudents();
-//	List<AdStudent> findStudents(Integer offset, Integer limit);
+//	List<AdStudent> findStudents();
+	List<AdStudent> findStudents(Integer offset, Integer limit);
 	List<AdStudent> findGraduatedStudents(Integer offset, Integer limit);
 	List<AdStudent> findStudents(String filter, Integer offset, Integer limit);
 	List<AdAddress> findAddresses(AdStudent student);

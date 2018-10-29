@@ -860,8 +860,8 @@ public class ProfileController {
 			students = profileService.findStudentsByGraduateCenter(center);
 
 		}else{
-			students = profileService.findStudents();
-//		 students = profileService.findStudents(0, Integer.MAX_VALUE);
+			//students = profileService.findStudents();
+		 students = profileService.findStudents(0, Integer.MAX_VALUE);
 			LOG.info("lepas if atas");
 		}
 		
