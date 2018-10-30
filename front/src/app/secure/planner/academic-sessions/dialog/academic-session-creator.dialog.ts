@@ -54,7 +54,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
             graduationEndDate: [undefined, Validators.required],
 
             semester: ['', Validators.required],
-            year: ['', Validators.required],
+            academicYear: ['', Validators.required],
         }, {
 
                 validator: DateValidation.CheckDate // your validation method

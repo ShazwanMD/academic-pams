@@ -278,11 +278,18 @@ public class IdentityController {
     // STUDENT
     // ==================================================================================================== //
 
+//    @RequestMapping(value = "/students", method = RequestMethod.GET)
+//    public ResponseEntity<List<Student>> findStudents() {
+//        return new ResponseEntity<List<Student>>(identityTransformer
+//                .toStudentVos(identityService.findStudents(0, 100)), HttpStatus.OK);
+//    }
+    
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public ResponseEntity<List<Student>> findStudents() {
         return new ResponseEntity<List<Student>>(identityTransformer
-                .toStudentVos(identityService.findStudents(0, 100)), HttpStatus.OK);
+                .toStudentVos(identityService.findStudents()), HttpStatus.OK);
     }
+
 
     @RequestMapping(value = "/students/{identityNo}", method = RequestMethod.GET)
     public ResponseEntity<Student> findStudentByIdentityNo(@PathVariable String identityNo) {

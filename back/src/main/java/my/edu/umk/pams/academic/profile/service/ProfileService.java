@@ -31,6 +31,7 @@ public interface ProfileService {
 	AdContact findContactById(Long id);
 
 	/*Listing*/
+//	List<AdStudent> findStudents();
 	List<AdStudent> findStudents(Integer offset, Integer limit);
 	List<AdStudent> findGraduatedStudents(Integer offset, Integer limit);
 	List<AdStudent> findStudents(String filter, Integer offset, Integer limit);
@@ -88,6 +89,7 @@ public interface ProfileService {
     String switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode);
 
 	void barStudent(AdStudent student);
+	
 	
 	
 }

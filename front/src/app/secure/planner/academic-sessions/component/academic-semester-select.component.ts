@@ -5,6 +5,7 @@ import {FormControl} from '@angular/forms';
 @Component({
   selector: 'pams-academic-semester-select',
   templateUrl: './academic-semester-select.component.html',
+  styleUrls: ['./academic-semester-select.scss'],
 })
 
 export class AcademicSemesterSelectComponent implements OnInit {

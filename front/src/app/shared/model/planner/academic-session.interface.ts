@@ -9,6 +9,6 @@ export interface AcademicSession extends MetaObject {
   startDate: Date;
   endDate: Date;
   semester: AcademicSemester;
-  year: AcademicYear;
+  academicYear: AcademicYear;
 
 }
