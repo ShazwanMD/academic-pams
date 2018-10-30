@@ -30,13 +30,13 @@ INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS
 VALUES (nextval('SQ_AD_PCPL'), 'cps-kerani', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 
 INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_AD_PCPL'), 'Siti Aisyah Binti Ahmad', 'sitiaisyah@umk.edu.my', 'abc123');
+VALUES (currval('SQ_AD_PCPL'), 'Kerani CPS', 'cps_kerani@umk.edu.my', 'abc123');
 
 INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
 VALUES (nextval('SQ_AD_PCPL'), 'cps-pegawai', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 
 INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_AD_PCPL'), 'Murhazlan Bin Mohamed', 'murhazlan@umk.edu.my', 'abc123');
+VALUES (currval('SQ_AD_PCPL'), 'Pegawai CPS', 'cps_pegawai@umk.edu.my', 'abc123');
 
 INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
 VALUES (nextval('SQ_AD_PCPL'), 'mgseb', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
@@ -48,19 +48,19 @@ INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS
 VALUES (nextval('SQ_AD_PCPL'), 'mgseb-kerani', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 
 INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_AD_PCPL'), 'Rosharumi Binti Mat Hussin', 'rosharumi@umk.edu.my', 'abc123');
+VALUES (currval('SQ_AD_PCPL'), 'Kerani mgseb', 'mgseb_kerani@umk.edu.my', 'abc123');
 
 INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
 VALUES (nextval('SQ_AD_PCPL'), 'mgseb-pegawai', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 
 INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_AD_PCPL'), 'Fatin Hamamah Binti Burhanudin', 'hamamah@umk.edu.my', 'abc123');
+VALUES (currval('SQ_AD_PCPL'), 'Pegawai mgseb', 'mgseb_pegawai@umk.edu.my', 'abc123');
 
-INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
-VALUES (nextval('SQ_AD_PCPL'), 'student1', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
-
-INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_AD_PCPL'), 'MUHAMMAD AMMAR FAIZ BIN AZMAN', 'ammar@umk.edu.my', 'abc123');
+--INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
+--VALUES (nextval('SQ_AD_PCPL'), 'student1', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+--
+--INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+--VALUES (currval('SQ_AD_PCPL'), 'MUHAMMAD AMMAR FAIZ BIN AZMAN', 'ammar@umk.edu.my', 'abc123');
 
 --INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
 --VALUES (nextval('SQ_AD_PCPL'), 'student2', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
@@ -68,11 +68,11 @@ VALUES (currval('SQ_AD_PCPL'), 'MUHAMMAD AMMAR FAIZ BIN AZMAN', 'ammar@umk.edu.m
 --INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 --VALUES (currval('SQ_AD_PCPL'), 'PAMS Student2', 'student2@umk.edu.my', 'abc123');
 
-INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
-VALUES (nextval('SQ_AD_PCPL'), 'lecturer1', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
-
-INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_AD_PCPL'), 'Prof. Madya Dr. Noraani Binti Mustapha', 'noraani@umk.edu.my', 'abc123');
+--INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
+--VALUES (nextval('SQ_AD_PCPL'), 'lecturer1', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+--
+--INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+--VALUES (currval('SQ_AD_PCPL'), 'Prof. Madya Dr. Noraani Binti Mustapha', 'noraani@umk.edu.my', 'abc123');
 
 --INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) 
 --VALUES (nextval('SQ_AD_PCPL'), 'mgseb-login', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
@@ -1287,17 +1287,17 @@ VALUES (nextval('SQ_AD_GROP_MMBR'),
 		(SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_USR'),
        (SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_STDN'), 1, 1, CURRENT_TIMESTAMP);
         
---- add Student1 to Group Member        
-INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) 
-VALUES (nextval('SQ_AD_GROP_MMBR'),
-		(SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_STDN'),
-        (SELECT ID FROM AD_PCPL WHERE NAME = 'student1'), 1, 1, CURRENT_TIMESTAMP);
-
---- add Lecturer1 to Group Member        
-INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) 
-VALUES (nextval('SQ_AD_GROP_MMBR'),
-		(SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_LEC'),
-        (SELECT ID FROM AD_PCPL WHERE NAME = 'lecturer1'), 1, 1, CURRENT_TIMESTAMP);
+----- add Student1 to Group Member        
+--INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) 
+--VALUES (nextval('SQ_AD_GROP_MMBR'),
+--		(SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_STDN'),
+--        (SELECT ID FROM AD_PCPL WHERE NAME = 'student1'), 1, 1, CURRENT_TIMESTAMP);
+--
+----- add Lecturer1 to Group Member        
+--INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) 
+--VALUES (nextval('SQ_AD_GROP_MMBR'),
+--		(SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_LEC'),
+--        (SELECT ID FROM AD_PCPL WHERE NAME = 'lecturer1'), 1, 1, CURRENT_TIMESTAMP);
 		
 --- ADD HEP TO GROUP PTJ       
 INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) 

@@ -108,12 +108,30 @@ public class WhenIAmAddNewStaff extends Stage<WhenIAmAddNewStaff> {
 //		AdGroup g = identityService.findGroupByUser(user);
 //		LOG.debug("Group:{}",g.getName());
 		
-		AdFaculty faculty = plannerService.findFacultyByCode("A10");
+//		AdFaculty faculty = plannerService.findFacultyByCode("A10");
+//		
+//		List<AdStaff> staffs = identityService.findAcademicStaffByFaculty(AdStaffType.ACADEMIC, faculty, 0, Integer.MAX_VALUE);
+//		for (AdStaff adStaff : staffs) {
+//			LOG.debug("ID:{}",adStaff.getStaffNo());
+//		}
 		
-		List<AdStaff> staffs = identityService.findAcademicStaffByFaculty(AdStaffType.ACADEMIC, faculty, 0, Integer.MAX_VALUE);
-		for (AdStaff adStaff : staffs) {
-			LOG.debug("ID:{}",adStaff.getStaffNo());
-		}
+		String identityNo = "1234";
+		
+		AdActor actor = identityService.findActorByIdentityNo(identityNo);
+		LOG.debug("Actor:{}",actor.getIdentityNo());
+		
+		AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
+		LOG.debug("Staff ID:{}",identityNo);
+		
+		AdUser user = identityService.findUserByEmail(staff.getEmail());
+		LOG.debug("User:{}",user.getEmail());
+		LOG.debug("User:{}",user.isEnabled());
+
+//		user.setEnabled(false);
+//		identityService.updateUser(user);
+
+
+
 		
 		
 		return self();

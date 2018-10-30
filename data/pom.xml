@@ -287,7 +287,10 @@
                                 <srcFile>src/test/resources/data/ACL.sql</srcFile>
 
                                 <!--IDENTITY-->
-                                <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
+                                 <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_PCPL.sql</srcFile>
+                               
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_GROP_MMBR.sql</srcFile>
 
                                 <!--COMMON-->
                                 <srcFile>src/test/resources/data/AD_GNDR_CODE.sql</srcFile>
@@ -308,14 +311,16 @@
                                 <srcFile>src/test/resources/data/AD_BANK_CODE.sql</srcFile>
 
                                 <!--PLANNER-->
-                                <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_ACDM_YEAR.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_ACDM_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_FCTY.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PRGM_LEVL.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_PRGM.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_CRLM.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_CHRT.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile> <!-- need cohort -->
-                                <srcFile>src/test/resources/data/AD_CRSE.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_PRGM.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_CRLM.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_CHRT.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_ACTR_LATEST.sql</srcFile> <!-- need cohort -->
+                                 <srcFile>src/test/resources/data/mgseb/MGSEB_AD_CRSE.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_STDN.sql</srcFile>
                     
 
 
@@ -336,6 +341,7 @@
                                 <srcFile>src/test/resources/data/AD_GRTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CNTC.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_SPONSORSHIP.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/MGSEB_AD_USER.sql</srcFile>
 
                             </srcFiles>
                         </configuration>

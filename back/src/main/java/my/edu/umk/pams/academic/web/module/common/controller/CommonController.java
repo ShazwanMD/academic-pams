@@ -89,7 +89,7 @@ public class CommonController {
 
     @RequestMapping(value = "/studyCenters", method = RequestMethod.POST)
     public ResponseEntity<String> saveStudyCenter(@RequestBody StudyCenter vo) {
-            dummyLogin();
+          
 
             AdStudyCenter studyCenter = new AdStudyCenterImpl();
             studyCenter.setCode(vo.getCode());
@@ -100,7 +100,7 @@ public class CommonController {
 
     @RequestMapping(value = "/studyCenters/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateStudyCenter(@PathVariable String code, @RequestBody StudyCenter vo) {
-            dummyLogin();
+          
 
             AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getId());
             studyCenter.setCode(vo.getCode());
@@ -111,7 +111,7 @@ public class CommonController {
 
     @RequestMapping(value = "/studyCenters/{code}", method = RequestMethod.DELETE)
     public ResponseEntity<String> removeStudyCenter(@PathVariable String code) {
-            dummyLogin();
+          
 
             AdStudyCenter StudyCenter = commonService.findStudyCenterByCode(code);
             commonService.removeStudyCenter(StudyCenter);
@@ -139,7 +139,7 @@ public class CommonController {
 
   @RequestMapping(value = "/studyModes", method = RequestMethod.POST)
   public ResponseEntity<String> saveStudyMode(@RequestBody StudyMode vo) {
-          dummyLogin();
+         
 
           AdStudyMode studyMode = new AdStudyModeImpl();
           studyMode.setCode(vo.getCode());
@@ -151,7 +151,7 @@ public class CommonController {
 
   @RequestMapping(value = "/studyModes/{code}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateStudyMode(@PathVariable String code, @RequestBody StudyMode vo) {
-          dummyLogin();
+         
 
           AdStudyMode studyMode = commonService.findStudyModeById(vo.getId());
           studyMode.setCode(vo.getCode());
@@ -163,7 +163,7 @@ public class CommonController {
 
   @RequestMapping(value = "/studyModes/{code}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeStudyMode(@PathVariable String code) {
-          dummyLogin();
+         
 
           AdStudyMode studyMode = commonService.findStudyModeByCode(code);
           commonService.removeStudyMode(studyMode);
@@ -190,7 +190,7 @@ public class CommonController {
 
   @RequestMapping(value = "/maritalCodes", method = RequestMethod.POST)
   public ResponseEntity<String> saveMaritalCode(@RequestBody MaritalCode vo) {
-          dummyLogin();
+         
 
           AdMaritalCode maritalCode = new AdMaritalCodeImpl();
           maritalCode.setCode(vo.getCode());
@@ -202,7 +202,7 @@ public class CommonController {
 
   @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateMaritalCode(@PathVariable String code, @RequestBody MaritalCode vo) {
-          dummyLogin();
+         
 
           AdMaritalCode maritalCode = commonService.findMaritalCodeById(vo.getId());
           maritalCode.setCode(vo.getCode());
@@ -214,8 +214,7 @@ public class CommonController {
 
   @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeMaritalCode(@PathVariable String code) {
-          dummyLogin();
-
+         
           AdMaritalCode maritalCode = commonService.findMaritalCodeByCode(code);
           commonService.removeMaritalCode(maritalCode);
           return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -240,7 +239,7 @@ public class CommonController {
 
   @RequestMapping(value = "/dunCodes", method = RequestMethod.POST)
   public ResponseEntity<String> saveDunCode(@RequestBody DunCode vo) {
-          dummyLogin();
+          
 
           AdDunCode dunCode = new AdDunCodeImpl();
           dunCode.setCode(vo.getCode());
@@ -252,7 +251,7 @@ public class CommonController {
 
   @RequestMapping(value = "/dunCodes/{code}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateDunCode(@PathVariable String code, @RequestBody DunCode vo) {
-          dummyLogin();
+         
 
           AdDunCode dunCode = commonService.findDunCodeById(vo.getId());
           dunCode.setCode(vo.getCode());
@@ -263,7 +262,7 @@ public class CommonController {
 
   @RequestMapping(value = "/dunCodes/{code}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeDunCode(@PathVariable String code) {
-          dummyLogin();
+         
 
           AdDunCode dunCode = commonService.findDunCodeByCode(code);
           commonService.removeDunCode(dunCode);
@@ -289,7 +288,7 @@ public class CommonController {
 
   @RequestMapping(value = "/bankCodes", method = RequestMethod.POST)
   public ResponseEntity<String> saveBankCode(@RequestBody BankCode vo) {
-          dummyLogin();
+         
 
          AdBankCode bankCode = new AdBankCodeImpl();
           bankCode.setCode(vo.getCode());
@@ -300,7 +299,7 @@ public class CommonController {
 
   @RequestMapping(value = "/bankCodes/{code}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateBankCode(@PathVariable String code, @RequestBody BankCode vo) {
-          dummyLogin();
+         
 
           AdBankCode bankCode = commonService.findBankCodeById(vo.getId());
           bankCode.setCode(vo.getCode());
@@ -311,7 +310,7 @@ public class CommonController {
 
   @RequestMapping(value = "/bankCodes/{code}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeBankCode(@PathVariable String code) {
-          dummyLogin();
+          
 
           AdBankCode bankCode = commonService.findBankCodeByCode(code);
           commonService.removeBankCode(bankCode);
@@ -337,7 +336,7 @@ public class CommonController {
 
   @RequestMapping(value = "/cityCodes", method = RequestMethod.POST)
   public ResponseEntity<String> saveCityCode(@RequestBody CityCode vo) {
-          dummyLogin();
+         
 
           AdCityCode cityCode = new AdCityCodeImpl();
           cityCode.setCode(vo.getCode());
@@ -348,7 +347,7 @@ public class CommonController {
 
   @RequestMapping(value = "/cityCodes/{code}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateCityCode(@PathVariable String code, @RequestBody CityCode vo) {
-          dummyLogin();
+         
 
           AdCityCode cityCode = commonService.findCityCodeById(vo.getId());
           cityCode.setCode(vo.getCode());
@@ -360,7 +359,7 @@ public class CommonController {
 
   @RequestMapping(value = "/cityCodes/{code}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeCityCode(@PathVariable String code) {
-          dummyLogin();
+         
 
           AdCityCode cityCode = commonService.findCityCodeByCode(code);
           commonService.removeCityCode(cityCode);
@@ -386,7 +385,7 @@ public ResponseEntity<CountryCode> findCountryCodeByCode(@PathVariable String co
 
 @RequestMapping(value = "/countryCodes", method = RequestMethod.POST)
 public ResponseEntity<String> saveCountryCode(@RequestBody CountryCode vo) {
-        dummyLogin();
+       
 
         AdCountryCode countryCode = new AdCountryCodeImpl();
         countryCode.setCode(vo.getCode());
@@ -399,7 +398,7 @@ public ResponseEntity<String> saveCountryCode(@RequestBody CountryCode vo) {
 
 @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.PUT)
 public ResponseEntity<String> updateCountryCode(@PathVariable String code, @RequestBody CountryCode vo) {
-        dummyLogin();
+       
 
         AdCountryCode countryCode = commonService.findCountryCodeById(vo.getId());
         countryCode.setCode(vo.getCode());
@@ -412,7 +411,7 @@ public ResponseEntity<String> updateCountryCode(@PathVariable String code, @Requ
 
 @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.DELETE)
 public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
-        dummyLogin();
+       
 
         AdCountryCode countryCode = commonService.findCountryCodeByCode(code);
         commonService.removeCountryCode(countryCode);
@@ -440,7 +439,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/stateCodes", method = RequestMethod.POST)
   public ResponseEntity<String> saveStateCode(@RequestBody StateCode vo) {
-          dummyLogin();
+         
 
           AdStateCode stateCode = new AdStateCodeImpl();
           stateCode.setCode(vo.getCode());
@@ -453,7 +452,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateStateCode(@PathVariable String code, @RequestBody StateCode vo) {
-          dummyLogin();
+         
 
           AdStateCode stateCode = commonService.findStateCodeById(vo.getId());
           stateCode.setCode(vo.getCode());
@@ -466,7 +465,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeStateCode(@PathVariable String code) {
-          dummyLogin();
+        
 
           AdStateCode stateCode = commonService.findStateCodeByCode(code);
           commonService.removeStateCode(stateCode);
@@ -492,7 +491,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/genderCodes", method = RequestMethod.POST)
   public ResponseEntity<String> saveGenderCode(@RequestBody GenderCode vo) {
-          dummyLogin();
+        
 
           AdGenderCode genderCode = new AdGenderCodeImpl();
           genderCode.setCode(vo.getCode());
@@ -503,7 +502,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/genderCodes/{code}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateGenderCode(@PathVariable String code, @RequestBody GenderCode vo) {
-          dummyLogin();
+          
 
           AdGenderCode genderCode = commonService.findGenderCodeById(vo.getId());
           genderCode.setCode(vo.getCode());
@@ -514,7 +513,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/genderCodes/{code}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeGenderCode(@PathVariable String code) {
-          dummyLogin();
+          
 
           AdGenderCode genderCode = commonService.findGenderCodeByCode(code);
           commonService.removeGenderCode(genderCode);
@@ -540,8 +539,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/raceCodes", method = RequestMethod.POST)
   public ResponseEntity<String> saveRaceCode(@RequestBody RaceCode vo) {
-          dummyLogin();
-
+         
           AdRaceCode raceCode = new AdRaceCodeImpl();
           raceCode.setCode(vo.getCode());
           raceCode.setDescriptionEn(vo.getDescriptionEn());
@@ -552,7 +550,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/raceCodes/{code}", method = RequestMethod.PUT)
   public ResponseEntity<String> updateRaceCode(@PathVariable String code, @RequestBody RaceCode vo) {
-          dummyLogin();
+          
 
           AdRaceCode raceCode = commonService.findRaceCodeById(vo.getId());
           raceCode.setCode(vo.getCode());
@@ -564,7 +562,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
   @RequestMapping(value = "/raceCodes/{code}", method = RequestMethod.DELETE)
   public ResponseEntity<String> removeRaceCode(@PathVariable String code) {
-          dummyLogin();
+        
 
           AdRaceCode raceCode = commonService.findRaceCodeByCode(code);
           commonService.removeRaceCode(raceCode);
@@ -592,7 +590,7 @@ public ResponseEntity<ParliamentCode> findParliamentCodeByCode(@PathVariable Str
 
 @RequestMapping(value = "/parliamentCodes", method = RequestMethod.POST)
 public ResponseEntity<String> saveParliamentCode(@RequestBody ParliamentCode vo) {
-        dummyLogin();
+      
 
         AdParliamentCode parliamentCode = new AdParliamentCodeImpl();
         parliamentCode.setCode(vo.getCode());
@@ -603,7 +601,7 @@ public ResponseEntity<String> saveParliamentCode(@RequestBody ParliamentCode vo)
 
 @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.PUT)
 public ResponseEntity<String> updateParliamentCode(@PathVariable String code, @RequestBody ParliamentCode vo) {
-        dummyLogin();
+        
 
         AdParliamentCode parliamentCode = commonService.findParliamentCodeById(vo.getId());
         parliamentCode.setCode(vo.getCode());
@@ -614,7 +612,7 @@ public ResponseEntity<String> updateParliamentCode(@PathVariable String code, @R
 
 @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.DELETE)
 public ResponseEntity<String> removeParliamentCode(@PathVariable String code) {
-        dummyLogin();
+        
 
         AdParliamentCode parliamentCode = commonService.findParliamentCodeByCode(code);
         commonService.removeParliamentCode(parliamentCode);
@@ -641,7 +639,7 @@ public ResponseEntity<GradeCode> findGradeCodeByCode(@PathVariable String code) 
 
 @RequestMapping(value = "/gradeCodes", method = RequestMethod.POST)
 public ResponseEntity<String> saveGradeCode(@RequestBody GradeCode vo) {
-      dummyLogin();
+      
 
       AdGradeCode gradeCode = new AdGradeCodeImpl();
       gradeCode.setCode(vo.getCode());
@@ -656,7 +654,7 @@ public ResponseEntity<String> saveGradeCode(@RequestBody GradeCode vo) {
 
 @RequestMapping(value = "/gradeCodes/{code}", method = RequestMethod.PUT)
 public ResponseEntity<String> updateGradeCode(@PathVariable String code, @RequestBody GradeCode vo) {
-      dummyLogin();
+     
 
       AdGradeCode gradeCode = commonService.findGradeCodeById(vo.getId());
       gradeCode.setCode(vo.getCode());
@@ -671,7 +669,7 @@ public ResponseEntity<String> updateGradeCode(@PathVariable String code, @Reques
 
 @RequestMapping(value = "/gradeCodes/{code}", method = RequestMethod.DELETE)
 public ResponseEntity<String> removeGradeCode(@PathVariable String code) {
-      dummyLogin();
+      
 
       AdGradeCode gradeCode = commonService.findGradeCodeByCode(code);
       commonService.removeGradeCode(gradeCode);
@@ -696,7 +694,7 @@ public ResponseEntity<ReligionCode> findReligionCodeByCode(@PathVariable String 
 
 @RequestMapping(value = "/religionCodes", method = RequestMethod.POST)
 public ResponseEntity<String> saveReligionCode(@RequestBody ReligionCode vo) {
-      dummyLogin();
+     
 
       AdReligionCode religionCode = new AdReligionCodeImpl();
       religionCode.setCode(vo.getCode());
@@ -708,7 +706,7 @@ public ResponseEntity<String> saveReligionCode(@RequestBody ReligionCode vo) {
 
 @RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.PUT)
 public ResponseEntity<String> updateReligionCode(@PathVariable String code, @RequestBody ReligionCode vo) {
-      dummyLogin();
+      
 
       AdReligionCode religionCode = commonService.findReligionCodeById(vo.getId());
       religionCode.setCode(vo.getCode());
@@ -720,7 +718,7 @@ public ResponseEntity<String> updateReligionCode(@PathVariable String code, @Req
 
 @RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.DELETE)
 public ResponseEntity<String> removeReligionCode(@PathVariable String code) {
-      dummyLogin();
+     
 
       AdReligionCode religionCode = commonService.findReligionCodeByCode(code);
       commonService.removeReligionCode(religionCode);
@@ -746,7 +744,7 @@ public ResponseEntity<NationalityCode> findNationalityCodeByCode(@PathVariable S
 
 @RequestMapping(value = "/nationalityCodes", method = RequestMethod.POST)
 public ResponseEntity<String> saveNationalityCode(@RequestBody NationalityCode vo) {
-      dummyLogin();
+     
 
       AdNationalityCode nationalityCode = new AdNationalityCodeImpl();
       nationalityCode.setCode(vo.getCode());
@@ -758,7 +756,7 @@ public ResponseEntity<String> saveNationalityCode(@RequestBody NationalityCode v
 
 @RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.PUT)
 public ResponseEntity<String> updateNationalityCode(@PathVariable String code, @RequestBody NationalityCode vo) {
-      dummyLogin();
+      
 
       AdNationalityCode nationalityCode = commonService.findNationalityCodeById(vo.getId());
       nationalityCode.setCode(vo.getCode());
@@ -770,7 +768,7 @@ public ResponseEntity<String> updateNationalityCode(@PathVariable String code, @
 
 @RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.DELETE)
 public ResponseEntity<String> removeNationalityCode(@PathVariable String code) {
-      dummyLogin();
+      
 
       AdNationalityCode nationalityCode = commonService.findNationalityCodeByCode(code);
       commonService.removeNationalityCode(nationalityCode);
@@ -797,7 +795,7 @@ public ResponseEntity<EthnicityCode> findEthnicityCodeByCode(@PathVariable Strin
 
 @RequestMapping(value = "/ethnicityCodes", method = RequestMethod.POST)
 public ResponseEntity<String> saveEthnicityCode(@RequestBody EthnicityCode vo) {
-      dummyLogin();
+      
 
      AdEthnicityCode ethnicityCode = new AdEthnicityCodeImpl();
       ethnicityCode.setCode(vo.getCode());
@@ -809,7 +807,7 @@ public ResponseEntity<String> saveEthnicityCode(@RequestBody EthnicityCode vo) {
 
 @RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.PUT)
 public ResponseEntity<String> updateEthnicityCode(@PathVariable String code, @RequestBody EthnicityCode vo) {
-      dummyLogin();
+     
 
       AdEthnicityCode ethnicityCode = commonService.findEthnicityCodeById(vo.getId());
       ethnicityCode.setCode(vo.getCode());
@@ -821,7 +819,7 @@ public ResponseEntity<String> updateEthnicityCode(@PathVariable String code, @Re
 
 @RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.DELETE)
 public ResponseEntity<String> removeEthnicityCode(@PathVariable String code) {
-      dummyLogin();
+     
 
       AdEthnicityCode ethnicityCode = commonService.findEthnicityCodeByCode(code);
       commonService.removeEthnicityCode(ethnicityCode);

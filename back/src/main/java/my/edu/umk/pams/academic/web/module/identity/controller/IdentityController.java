@@ -140,35 +140,6 @@ public class IdentityController {
                 .toStaffVos(identityService.findAcademicStaffByFaculty(AdStaffType.ACADEMIC,faculty, 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
     
-//    @RequestMapping(value = "/academicStaffs", method = RequestMethod.GET)
-//    public ResponseEntity<List<StaffAcademic>> findAcademicStaffs() {
-//    	
-//    	AdFaculty faculty = plannerService.findFacultyByCode("A10");
-//    	List<AdStaff> staff = identityService.findAcademicStaffByFaculty(AdStaffType.ACADEMIC, faculty, 0, Integer.MAX_VALUE);
-//    	List<AdUser> users = identityService.findUsers(0, Integer.MAX_VALUE);
-//
-//    	List<StaffAcademic> staffs = new ArrayList<StaffAcademic>();
-//    
-//    	for (AdStaff adStaff : staff) {
-//    		StaffAcademic sa = new StaffAcademic();
-//			sa.setEmail(adStaff.getEmail());
-//			sa.setName(adStaff.getName());
-//			sa.setUsername(adStaff.getEmail());
-//			
-//			AdStaff staffBaharu = identityService.findStaffByIdentityNo(adStaff.getIdentityNo());
-//			sa.setStaff(identityTransformer.toStaffVo(staffBaharu));
-//	    	for (AdUser adUser : users) {
-//	    		LOG.debug("User:{}",adUser.isEnabled());
-//			sa.setEnabled(adUser.isEnabled());
-//			staffs.add(sa);
-//			}
-//			LOG.debug("Staff:{}",adStaff.getEmail());
-//	    	staffs.add(sa);
-//    	}
-//
-//    	
-//        return new ResponseEntity<List<StaffAcademic>>(staffs,HttpStatus.OK);
-//    }
     
     @RequestMapping(value = "/academicStaffs",method = RequestMethod.POST)
     public ResponseEntity<String> saveAcademicStaff(@RequestBody Staff vo){

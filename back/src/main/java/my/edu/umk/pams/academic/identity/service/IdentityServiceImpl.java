@@ -222,6 +222,11 @@ public class IdentityServiceImpl implements IdentityService {
 	// ====================================================================================================
 	// GROUP
 	// ====================================================================================================
+	
+    @Override
+    public AdGroupMember findGroupMemberByPrincipal(AdPrincipal principal) {
+        return groupDao.findByPrincipal(principal);
+    }
 
 	@Override
 	public AdGroup getRootGroup() {

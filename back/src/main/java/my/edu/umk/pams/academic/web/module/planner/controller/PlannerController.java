@@ -109,7 +109,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/academicSessions/{code}/update", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
-		dummyLogin();
 		LOG.debug("SessionCode:{}", code);
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		academicSession.setDescription(vo.getDescription());
@@ -130,7 +129,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
-		//dummyLogin();
 
 		if (isAcademicSessionCodeExists(code)) {
 
@@ -205,7 +203,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateAcademicSession(@PathVariable String code) {
-		dummyLogin();
 		LOG.debug("activate sesssion");
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		academicSession.setCurrent(true);
@@ -215,7 +212,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/academicSessions/{code}/deactivate", method = RequestMethod.GET)
 	public ResponseEntity<String> deactivateAcademicSession(@PathVariable String code) {
-		dummyLogin();
 		LOG.debug("deactivate sesssion");
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		academicSession.setCurrent(false);
@@ -229,7 +225,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/academicYears/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAcademicYear(@PathVariable String code, @RequestBody AcademicYear vo) {
-		dummyLogin();
 		if (isAcademicYearExists(vo.getCode())) {
 
 			System.out.println("Duplicate academicYear:" + vo.getCode());
@@ -249,7 +244,6 @@ public class PlannerController {
 	// update academicYear
 	@RequestMapping(value = "/academicYears/{code}/update", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateAcademicYear(@PathVariable String code, @RequestBody AcademicYear vo) {
-		//dummyLogin();
 		System.out.println("Update academicYear:" + vo.getCode());
 		
 		AdAcademicYear academicYear = plannerService.findAcademicYearByCode(code);	
@@ -262,7 +256,6 @@ public class PlannerController {
 	//remove academicYear
 	 @RequestMapping(value = "/academicYears/{code}", method = RequestMethod.DELETE)
 	  public ResponseEntity<String> removeAcademicYear(@PathVariable String code) {
-	          //dummyLogin();
 
 	          AdAcademicYear academicYear = plannerService.findAcademicYearByCode(code);
 	          plannerService.removeAcademicYear(academicYear);
@@ -291,7 +284,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/programLevels/{code}/update", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateProgramLevel(@PathVariable String code, @RequestBody ProgramLevel vo) {
-		dummyLogin();
 		LOG.debug("LevelCode:{}", code);
 		AdProgramLevel programLevel = plannerService.findProgramLevelByCode(code);
 		programLevel.setDescription(vo.getDescription());
@@ -301,7 +293,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/programLevels/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveProgramLevel(@PathVariable String code, @RequestBody ProgramLevel vo) {
-		dummyLogin();
 		AdProgramLevel programLevel = new AdProgramLevelImpl();
 		programLevel.setCode(vo.getCode());
 		programLevel.setDescription(vo.getDescription());
@@ -315,7 +306,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/faculties/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveFaculty(@PathVariable String code, @RequestBody Faculty vo) {
-		dummyLogin();
 		AdFaculty faculty = new AdFacultyImpl();
 		faculty.setCode(vo.getCode());
 		faculty.setDescription(vo.getDescription());
@@ -328,7 +318,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/faculties/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateFaculty(@PathVariable String code, @RequestBody Faculty vo) {
-		dummyLogin();
 		LOG.debug("faculty code:{}", code);
 		AdFaculty faculty = plannerService.findFacultyByCode(code);
 		faculty.setDescription(vo.getDescription());
@@ -341,7 +330,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateFacultiy(@PathVariable String code) {
-		dummyLogin();
 		LOG.debug("activate program");
 		AdFaculty faculty = plannerService.findFacultyByCode(code);
 		faculty.setStatus(AdFacultyStatus.ACTIVE);
@@ -351,7 +339,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/faculties/{code}/deactivate", method = RequestMethod.GET)
 	public ResponseEntity<String> deactivateFaculty(@PathVariable String code) {
-		dummyLogin();
 		LOG.debug("deactivate program");
 		AdFaculty faculty = plannerService.findFacultyByCode(code);
 		faculty.setStatus(AdFacultyStatus.INACTIVE);
@@ -424,7 +411,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
-		dummyLogin();
 		if (isProgramExists(code, plannerService.findFacultyById(vo.getFaculty().getId()))) {
 			// throw new IllegalArgumentException("Data program already exists!
 			// Please insert new data");
@@ -486,7 +472,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
-		//dummyLogin();
 		AdProgram program = plannerService.findProgramByCode(code);
 		program.setCode(vo.getCode());
 		program.setTitleMs(vo.getTitleMs());
@@ -498,7 +483,6 @@ public class PlannerController {
 	
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> removeProgram(@PathVariable String code) {
-		dummyLogin();
 		AdProgram program = plannerService.findProgramByCode(code);
 		plannerService.removeProgram(program);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -506,7 +490,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/programs/{code}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateProgram(@PathVariable String code) {
-		dummyLogin();
 		LOG.debug("activate program");
 		AdProgram program = plannerService.findProgramByCode(code);
 		program.setStatus(AdProgramStatus.ACTIVE);
@@ -518,7 +501,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/programs/{code}/deactivate", method = RequestMethod.GET)
 	public ResponseEntity<String> deactivateProgram(@PathVariable String code) {
-		dummyLogin();
 		LOG.debug("deactivate program");
 		AdProgram program = plannerService.findProgramByCode(code);
 		program.setStatus(AdProgramStatus.INACTIVE);
@@ -602,7 +584,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/courses/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveCourse(@PathVariable String code, @RequestBody Course vo) {
-		dummyLogin();
 		if (isCourseExists(code, plannerService.findFacultyById(vo.getFaculty().getId()))) {
 			// throw new IllegalArgumentException("Data program already exists!
 			// Please insert new data");
@@ -638,7 +619,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/courses/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateCourse(@PathVariable String code, @RequestBody Course vo) {
-		dummyLogin();
 		AdCourse course = plannerService.findCourseByCode(code);
 		// course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
 		course.setCode(vo.getCode());
@@ -653,7 +633,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateCourse(@PathVariable String code) {
-		dummyLogin();
 		LOG.debug("activate course");
 		AdCourse course = plannerService.findCourseByCode(code);
 		course.setStatus(AdCourseStatus.ACTIVE);
@@ -664,7 +643,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.GET)
 	public ResponseEntity<String> deactivateCourse(@PathVariable String code) {
-		dummyLogin();
 		LOG.debug("deactivate course");
 		AdCourse course = plannerService.findCourseByCode(code);
 		course.setStatus(AdCourseStatus.INACTIVE);
@@ -701,7 +679,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/curriculums/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveCurriculum(@PathVariable String code, @RequestBody Curriculum vo) {
-		dummyLogin();
 		AdCurriculum curriculum = new AdCurriculumImpl();
 		curriculum.setCode(vo.getCode());
 		curriculum.setCoreCredit(vo.getCoreCredit());
@@ -778,7 +755,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/curriculums/{code}/singleSubjects", method = RequestMethod.POST)
 	public ResponseEntity<String> addSingleSubject(@PathVariable String code, @RequestBody SingleSubject vo) {
-		dummyLogin();
 		LOG.info("Adding single subject");
 		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
 		AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
@@ -792,7 +768,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/curriculums/{code}/bundleSubjects", method = RequestMethod.POST)
 	public ResponseEntity<String> addBundleSubject(@PathVariable String code, @RequestBody BundleSubject vo) {
-		dummyLogin();
 		LOG.debug("Adding bundle subject");
 		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
 		AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
@@ -806,7 +781,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/curriculums/{id}/subjectParts", method = RequestMethod.POST)
 	public ResponseEntity<String> addSubjectPart(@PathVariable Long id, @RequestBody BundleSubjectPart vo) {
-		dummyLogin();
 		LOG.info("Adding subject part");
 		AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
 		AdBundleSubject bundleSubject = plannerService.findBundleSubjectById(id);
@@ -819,7 +793,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/curriculums/{code}/subject", method = RequestMethod.POST)
 	public ResponseEntity<String> addSubject(@PathVariable Long id, @RequestBody Subject vo) {
-		dummyLogin();
 		LOG.info("Haiii");
 		AdCurriculum curriculum = plannerService.findCurriculumById(id);
 		AdSubject subject = new AdSubjectImpl();
@@ -877,7 +850,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/cohorts", method = RequestMethod.POST)
 	public ResponseEntity<String> saveCohort(@RequestBody Cohort vo) {
-		dummyLogin();
 
 		if (isCohortExists(vo.getCode())) {
 
@@ -904,7 +876,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/cohorts/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateCohort(@PathVariable String code, @RequestBody Cohort vo) {
-		dummyLogin();
 
 		AdCohort cohort = plannerService.findCohortByCode(code);
 		cohort.setCode(vo.getCode());
@@ -960,7 +931,6 @@ public class PlannerController {
 	// delete subject by curriculum
 	@RequestMapping(value = "/curriculums/{code}/subjects/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteSubject(@PathVariable String code, @PathVariable Long id) {
-		dummyLogin();
 
 		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
 		AdSubject subject = plannerService.findSubjectById(id);
@@ -970,7 +940,6 @@ public class PlannerController {
 	
 	@RequestMapping(value = "/curriculums/{id}/bundleSubjectParts", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteSubjectPart(@PathVariable Long id,@RequestBody BundleSubjectPart vo) {
-		dummyLogin();
 		
 		AdBundleSubject bundleSubject = plannerService.findBundleSubjectById(id);
 		AdBundleSubjectPart part = plannerService.findBundleSubjectPartById(vo.getId());
@@ -986,7 +955,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/subjects/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateSubject(@PathVariable Long id, @RequestBody Subject vo) {
-		dummyLogin();
 
 		AdCurriculum curriculum = plannerService.findCurriculumById(id);
 		AdSubject subject = plannerService.findSubjectById(id);
@@ -998,7 +966,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/subjects/{id}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateSubject(@PathVariable Long id, @RequestBody Subject vo) {
-		dummyLogin();
 		LOG.debug("activate subjects");
 		AdCurriculum curriculum = plannerService.findCurriculumById(id);
 		AdSubject subject = plannerService.findSubjectById(id);
@@ -1010,7 +977,6 @@ public class PlannerController {
 
 	@RequestMapping(value = "/subjects/{id}/deactivate", method = RequestMethod.GET)
 	public ResponseEntity<String> deactivateSubject(@PathVariable Long id, @RequestBody Subject vo) {
-		dummyLogin();
 		LOG.debug("deactivate subjects");
 		AdCurriculum curriculum = plannerService.findCurriculumById(id);
 		AdSubject subject = plannerService.findSubjectById(id);
@@ -1023,9 +989,4 @@ public class PlannerController {
 	// PRIVATE METHODS
 	// ====================================================================================================
 
-	private void dummyLogin() {
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
-		Authentication authed = authenticationManager.authenticate(token);
-		SecurityContextHolder.getContext().setAuthentication(authed);
-	}
 }

@@ -64,6 +64,7 @@ import my.edu.umk.pams.academic.security.integration.NonSerializableSecurityCont
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.identity.vo.ActorType;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.connector.payload.AccountPayload;
@@ -98,10 +99,10 @@ public class IntegrationController {
 
 	@Autowired
 	private ProfileService profileService;
-	
-	//=======================================================================================
-	//	Program Field Code
-	//=======================================================================================
+
+	// =======================================================================================
+	// Program Field Code
+	// =======================================================================================
 	@RequestMapping(value = "/programCodes", method = RequestMethod.POST)
 	public ResponseEntity<String> saveProgramFieldCode(@RequestBody ProgramCodePayload payload) {
 		SecurityContext ctx = loginAsSystem();
@@ -113,7 +114,7 @@ public class IntegrationController {
 		programCode.setFaculty(plannerService.findFacultyByCode(payload.getFacultyCode().getCode()));
 		programCode.setLevel(plannerService.findProgramLevelByCode(payload.getProgramLevel().getCode()));
 		programCode.setStatus(AdProgramStatus.ACTIVE);
-		
+
 		plannerService.saveProgram(programCode);
 
 		logoutAsSystem(ctx);
@@ -1173,19 +1174,453 @@ public class IntegrationController {
 		student.setBalance(payload.getBalance());
 		student.setOutstanding(payload.isOutstanding());
 		student.setStudentStatus(AdStudentStatus.get(payload.getStudentStatus().ordinal()));
-		
-		if(payload.isOutstanding()==true){
-			
+
+		if (payload.isOutstanding() == true) {
+
 			LOG.info("Student Has Outstanding Payment");
 			student.setMemo("Outstanding Payments");
-		}else{
-			
+		} else {
+
 			LOG.info("Student Has No Outstanding Payment");
 			student.setMemo("Active");
 		}
 		identityService.updateStudent(student);
 
 		LOG.info("Finish Receiving Student Account");
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
+	}
+
+	// ====================================================================================================
+	// DEKAN DAN TIMB DEKAN
+	// ====================================================================================================
+
+	@RequestMapping(value = "/staff/dekanAcademic", method = RequestMethod.POST)
+	public ResponseEntity<String> saveDekanAcademic(@RequestBody List<StaffPayload> staffPayload)
+			throws RecursiveGroupException {
+		SecurityContext ctx = loginAsSystem();
+
+		LOG.debug("Mula Terima");
+		for (StaffPayload payload : staffPayload) {
+
+			AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+			LOG.debug("Kod Fakulti:{}", faculty.getCode());
+
+			boolean staffExist = identityService.isStaffNoExists(payload.getStaffId());
+
+			if (staffExist == true) {
+				LOG.debug("Staf_No Sudah Wujud");
+
+				// Cari Staf
+				AdStaff stafWujud = identityService.findStaffByStaffNo(payload.getStaffId());
+
+				AdStaff upStaf = identityService.findStaffByStaffNo(payload.getStaffId());
+				upStaf.setActorType(AdActorType.STAFF);
+				upStaf.setEmail(payload.getStaffEmail());
+				upStaf.setFaculty(faculty);
+				upStaf.setName(payload.getStaffName());
+				upStaf.setStaffCategory(payload.getStaffCategory());
+				upStaf.setStaffType(AdStaffType.ACADEMIC);
+				identityService.updateStaff(upStaf);
+
+				LOG.debug("Staf Berjaya Update");
+
+				LOG.debug("Mula Update USER");
+				AdUser upUser = identityService.findUserByEmail(payload.getStaffEmail());
+				upUser.setActor(upStaf);
+				upUser.setEmail(payload.getStaffEmail());
+				upUser.setEnabled(true);
+				upUser.setLocked(true);
+				upUser.setName(payload.getStaffEmail());
+				upUser.setPassword(payload.getStaffId());
+				upUser.setPrincipalType(AdPrincipalType.USER);
+				upUser.setRealName(payload.getStaffName());
+				upUser.setUsername(payload.getStaffEmail());
+				identityService.updateUser(upUser);
+				LOG.debug("User Berjaya Update");
+
+				AdPrincipal upPrincipal = identityService.findPrincipalByName(payload.getStaffEmail());
+				if (faculty.getCode().equals("A10") && payload.getStaffCategory().equals("DEKAN")) {
+
+					AdPrincipalRole upRole = identityService.findRoleByPrincipal(upPrincipal);
+
+					identityService.deletePrincipalRole(upPrincipal, upRole);
+
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(upPrincipal);
+					newRole.setRole(AdRoleType.ROLE_MGSEB);
+					identityService.addPrincipalRole(upPrincipal, newRole);
+
+					try {
+						LOG.debug("Update Group");
+
+						AdGroup groupLama = identityService.findGroupByUser(upUser);
+						LOG.debug("Group Lama:{}", groupLama.getName());
+
+						AdGroupMember grpMemberLama = identityService.findGroupMemberByPrincipal(upPrincipal);
+						LOG.debug("grpMemberLama:{}", grpMemberLama.getGroup().getName());
+
+						identityService.deleteGroupMember(groupLama, upPrincipal);
+
+						AdGroup grpBaru = identityService.findGroupByName("GRP_DKN_ADM_A10");
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(upPrincipal);
+						identityService.addGroupMember(grpBaru, upPrincipal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+
+				} else if (faculty.getCode().equals("A09") && payload.getStaffCategory().equals("DEKAN")) {
+
+					AdPrincipalRole upRole = identityService.findRoleByPrincipal(upPrincipal);
+
+					identityService.deletePrincipalRole(upPrincipal, upRole);
+
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(upPrincipal);
+					newRole.setRole(AdRoleType.ROLE_CPS);
+					identityService.addPrincipalRole(upPrincipal, newRole);
+
+					try {
+						LOG.debug("Update Group");
+
+						AdGroup groupLama = identityService.findGroupByUser(upUser);
+						LOG.debug("Group Lama:{}", groupLama.getName());
+
+						AdGroupMember grpMemberLama = identityService.findGroupMemberByPrincipal(upPrincipal);
+						LOG.debug("grpMemberLama:{}", grpMemberLama.getGroup().getName());
+
+						identityService.deleteGroupMember(groupLama, upPrincipal);
+
+						AdGroup grpBaru = identityService.findGroupByName("GRP_DKN_ADM_A09");
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(upPrincipal);
+						identityService.addGroupMember(grpBaru, upPrincipal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+
+				} else if (faculty.getCode().equals("A10")) {
+
+					AdPrincipalRole upRole = identityService.findRoleByPrincipal(upPrincipal);
+
+					identityService.deletePrincipalRole(upPrincipal, upRole);
+
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(upPrincipal);
+					newRole.setRole(AdRoleType.ROLE_MGSEB);
+					identityService.addPrincipalRole(upPrincipal, newRole);
+
+					try {
+						LOG.debug("Update Group");
+
+						AdGroup groupLama = identityService.findGroupByUser(upUser);
+						LOG.debug("Group Lama:{}", groupLama.getName());
+
+						AdGroupMember grpMemberLama = identityService.findGroupMemberByPrincipal(upPrincipal);
+						LOG.debug("grpMemberLama:{}", grpMemberLama.getGroup().getName());
+
+						identityService.deleteGroupMember(groupLama, upPrincipal);
+
+						AdGroup grpBaru = identityService.findGroupByName("GRP_TDKN_ADM_A10");
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(upPrincipal);
+						identityService.addGroupMember(grpBaru, upPrincipal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+
+				} else if (faculty.getCode().equals("A09")) {
+
+					AdPrincipalRole upRole = identityService.findRoleByPrincipal(upPrincipal);
+
+					identityService.deletePrincipalRole(upPrincipal, upRole);
+
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(upPrincipal);
+					newRole.setRole(AdRoleType.ROLE_CPS);
+					identityService.addPrincipalRole(upPrincipal, newRole);
+
+					try {
+						LOG.debug("Update Group");
+
+						AdGroup groupLama = identityService.findGroupByUser(upUser);
+						LOG.debug("Group Lama:{}", groupLama.getName());
+
+						AdGroupMember grpMemberLama = identityService.findGroupMemberByPrincipal(upPrincipal);
+						LOG.debug("grpMemberLama:{}", grpMemberLama.getGroup().getName());
+
+						identityService.deleteGroupMember(groupLama, upPrincipal);
+
+						AdGroup grpBaru = identityService.findGroupByName("GRP_TDKN_ADM_A09");
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(upPrincipal);
+						identityService.addGroupMember(grpBaru, upPrincipal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+
+				} else if (payload.getStaffCategory().equals("DEKAN")) {
+
+					AdPrincipalRole upRole = identityService.findRoleByPrincipal(upPrincipal);
+
+					identityService.deletePrincipalRole(upPrincipal, upRole);
+
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(upPrincipal);
+					newRole.setRole(AdRoleType.ROLE_FACULTY);
+					identityService.addPrincipalRole(upPrincipal, newRole);
+
+					try {
+						LOG.debug("Update Group");
+
+						AdGroup groupLama = identityService.findGroupByUser(upUser);
+						LOG.debug("Group Lama:{}", groupLama.getName());
+
+						AdGroupMember grpMemberLama = identityService.findGroupMemberByPrincipal(upPrincipal);
+						LOG.debug("grpMemberLama:{}", grpMemberLama.getGroup().getName());
+
+						identityService.deleteGroupMember(groupLama, upPrincipal);
+
+						AdGroup grpBaru = identityService
+								.findGroupByName("GRP_DKN_FCTY_" + payload.getStaffDepartmentCode());
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(upPrincipal);
+						identityService.addGroupMember(grpBaru, upPrincipal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+
+				} else {
+
+					AdPrincipalRole upRole = identityService.findRoleByPrincipal(upPrincipal);
+
+					identityService.deletePrincipalRole(upPrincipal, upRole);
+
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(upPrincipal);
+					newRole.setRole(AdRoleType.ROLE_FACULTY);
+					identityService.addPrincipalRole(upPrincipal, newRole);
+
+					try {
+						LOG.debug("Update Group");
+
+						AdGroup groupLama = identityService.findGroupByUser(upUser);
+						LOG.debug("Group Lama:{}", groupLama.getName());
+
+						AdGroupMember grpMemberLama = identityService.findGroupMemberByPrincipal(upPrincipal);
+						LOG.debug("grpMemberLama:{}", grpMemberLama.getGroup().getName());
+
+						identityService.deleteGroupMember(groupLama, upPrincipal);
+
+						AdGroup grpBaru = identityService
+								.findGroupByName("GRP_TDKN_FCTY_" + payload.getStaffDepartmentCode());
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(upPrincipal);
+						identityService.addGroupMember(grpBaru, upPrincipal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+
+				}
+
+			}else{
+				
+				LOG.debug("New");
+				AdStaff staf = new AdStaffImpl();
+				staf.setActorType(AdActorType.STAFF);
+				staf.setEmail(payload.getStaffEmail());
+				staf.setFaculty(faculty);
+				staf.setName(payload.getStaffName());
+				staf.setStaffCategory(payload.getStaffCategory());
+				staf.setStaffType(AdStaffType.ACADEMIC);
+				staf.setIdentityNo(payload.getStaffId());
+				identityService.saveStaff(staf);
+				
+				AdUser user = new AdUserImpl();
+				user.setActor(staf);
+				user.setEmail(payload.getStaffEmail());
+				user.setEnabled(true);
+				user.setLocked(true);
+				user.setName(payload.getStaffEmail());
+				user.setPassword(payload.getStaffId());
+				user.setPrincipalType(AdPrincipalType.USER);
+				user.setRealName(payload.getStaffName());
+				user.setUsername(payload.getStaffEmail());
+				identityService.saveUser(user);
+				
+				AdPrincipal principal = identityService.findPrincipalByName(payload.getStaffEmail());
+				if(payload.getStaffDepartmentCode().equals("A10") && payload.getStaffCategory().equals("DEKAN")){
+
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(principal);
+					newRole.setRole(AdRoleType.ROLE_MGSEB);
+					identityService.addPrincipalRole(principal, newRole);
+
+					try {
+						LOG.debug("Group");
+
+						AdGroup grpBaru = identityService
+								.findGroupByName("GRP_DKN_ADM_A10");
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(principal);
+						identityService.addGroupMember(grpBaru, principal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+					
+					//DEKAN
+				}else if(payload.getStaffDepartmentCode().equals("A09") && payload.getStaffCategory().equals("DEKAN")){
+					//DEKAN PPS
+					
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(principal);
+					newRole.setRole(AdRoleType.ROLE_CPS);
+					identityService.addPrincipalRole(principal, newRole);
+
+					try {
+						LOG.debug("Group");
+
+						AdGroup grpBaru = identityService
+								.findGroupByName("GRP_DKN_ADM_A09");
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(principal);
+						identityService.addGroupMember(grpBaru, principal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+				}else if(payload.getStaffDepartmentCode().equals("A10")){
+					
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(principal);
+					newRole.setRole(AdRoleType.ROLE_MGSEB);
+					identityService.addPrincipalRole(principal, newRole);
+
+					try {
+						LOG.debug("Group");
+
+						AdGroup grpBaru = identityService
+								.findGroupByName("GRP_TDKN_ADM_A10");
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(principal);
+						identityService.addGroupMember(grpBaru, principal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+					
+				}else if(payload.getStaffDepartmentCode().equals("A09")){
+					
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(principal);
+					newRole.setRole(AdRoleType.ROLE_CPS);
+					identityService.addPrincipalRole(principal, newRole);
+
+					try {
+						LOG.debug("Group");
+
+						AdGroup grpBaru = identityService
+								.findGroupByName("GRP_TDKN_ADM_A09");
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(principal);
+						identityService.addGroupMember(grpBaru, principal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+					
+				}else if(payload.getStaffCategory().equals("DEKAN")){
+					
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(principal);
+					newRole.setRole(AdRoleType.ROLE_FACULTY);
+					identityService.addPrincipalRole(principal, newRole);
+
+					try {
+						LOG.debug("Group");
+
+						AdGroup grpBaru = identityService
+								.findGroupByName("GRP_DKN_FCTY_"+payload.getStaffDepartmentCode());
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(principal);
+						identityService.addGroupMember(grpBaru, principal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+					
+				}else{
+					
+					AdPrincipalRole newRole = new AdPrincipalRoleImpl();
+					newRole.setPrincipal(principal);
+					newRole.setRole(AdRoleType.ROLE_FACULTY);
+					identityService.addPrincipalRole(principal, newRole);
+
+					try {
+						LOG.debug("Group");
+
+						AdGroup grpBaru = identityService
+								.findGroupByName("GRP_TDKN_FCTY_"+payload.getStaffDepartmentCode());
+
+						AdGroupMember grpMemberBaru = new AdGroupMemberImpl();
+						grpMemberBaru.setGroup(grpBaru);
+						grpMemberBaru.setPrincipal(principal);
+						identityService.addGroupMember(grpBaru, principal);
+
+					} catch (RecursiveGroupException e) {
+
+						e.printStackTrace();
+					}
+					
+				}
+				
+				
+				
+			}
+
+		}
+
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("sucess", HttpStatus.OK);
 	}
@@ -1306,9 +1741,9 @@ public class IntegrationController {
 		if (payload.getFacultyCode().getCode().equals("A10")) {
 			admission.setAdvisor(null);
 		} else {
-			if(payload.getSupervisorCode() != null){
+			if (payload.getSupervisorCode() != null) {
 				AdStaff advisor = identityService.findStaffByIdentityNo(payload.getSupervisorCode());
-				admission.setAdvisor(advisor);				
+				admission.setAdvisor(advisor);
 			}
 			LOG.debug("SupervisorCode null !");
 			admission.setAdvisor(null);

@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.identity.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdGroup;
+import my.edu.umk.pams.academic.identity.model.AdGroupMember;
 import my.edu.umk.pams.academic.identity.model.AdPrincipal;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.identity.model.AdPrincipalType;
@@ -26,6 +27,8 @@ public interface AdGroupDao extends GenericDao<Long, AdGroup> {
     // ====================================================================================================
     // FINDER
     // ====================================================================================================
+    
+    AdGroupMember findByPrincipal(AdPrincipal principal);
 
     AdGroup findByName(String name);
 

@@ -72,6 +72,8 @@ public interface IdentityService {
 	// ====================================================================================================
 	// GROUP
 	// ====================================================================================================
+	
+	AdGroupMember findGroupMemberByPrincipal(AdPrincipal principal);
 
 	AdGroup getRootGroup();
 

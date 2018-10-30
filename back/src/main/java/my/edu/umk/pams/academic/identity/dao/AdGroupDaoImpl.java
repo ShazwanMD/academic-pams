@@ -33,6 +33,17 @@ public class AdGroupDaoImpl extends GenericDaoSupport<Long, AdGroup> implements 
     // =============================================================================
     // FINDER METHODS
     // =============================================================================
+    
+    @Override
+    public AdGroupMember findByPrincipal(AdPrincipal principal) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdGroupMember p where " +
+                "p.principal = :principal " +
+                "and p.metadata.state = :state ");
+        query.setInteger("state", ACTIVE.ordinal());
+        query.setEntity("principal", principal);
+        return (AdGroupMember) query.uniqueResult();
+    }
 
     @Override
     public List<AdGroup> findAll() {
